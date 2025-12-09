@@ -58,8 +58,6 @@ let
 
     defconfig = "cachyos_defconfig";
 
-    modDirVersion = "${ver0}";
-
     # Clang has some incompatibilities with NixOS's default kernel config
     ignoreConfigErrors = lto;
 
