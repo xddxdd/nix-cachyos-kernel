@@ -81,6 +81,8 @@
             cachyosKernels = loadPackages prev;
           };
 
+          hydraJobs.packages = self.packages;
+
           # Example configurations for testing CachyOS kernel
           nixosConfigurations = lib.genAttrs systems (
             system:
