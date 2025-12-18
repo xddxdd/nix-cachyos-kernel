@@ -42,6 +42,12 @@ lib.makeOverridable (
     hardened ? false,
     rt ? false,
 
+    # Build as much components as possible as kernel modules, including disabled ones.
+    # This can enable unexpected modules. Disabling by default for as close behavior
+    # as possible compared to upstream.
+    # https://github.com/xddxdd/nix-cachyos-kernel/issues/13
+    autoModules ? false,
+
     # See nixpkgs/pkgs/os-specific/linux/kernel/generic.nix for additional options.
     # Additional args are passed to buildLinux.
     ...
@@ -152,7 +158,7 @@ lib.makeOverridable (
       # CachyOS's options has some unused options for older kernel versions
       ignoreConfigErrors = args.ignoreConfigErrors or true;
 
-      inherit structuredExtraConfig;
+      inherit structuredExtraConfig autoModules;
 
       extraMeta = {
         description = "Linux CachyOS Kernel" + lib.optionalString lto " with Clang+ThinLTO";
