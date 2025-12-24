@@ -14,15 +14,12 @@ in
 lib.mapAttrs' (
   n: v:
   let
-    zfsPackage = callPackage ../zfs-cachyos {
-      inherit inputs;
-      kernel = v;
-    };
-
     packages = kernelModuleLLVMOverride (
       (linuxKernel.packagesFor v).extend (
         final: prev: {
-          zfs_cachyos = zfsPackage;
+          zfs_cachyos = final.callPackage ../zfs-cachyos {
+            inherit inputs;
+          };
         }
       )
     );

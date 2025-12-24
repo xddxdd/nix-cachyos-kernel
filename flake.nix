@@ -44,9 +44,11 @@
           kernels
           // packages
           // {
-            zfs-cachyos = pkgs.callPackage ./zfs-cachyos {
+            zfs-cachyos = packages.linuxPackages-cachyos-latest.callPackage ./zfs-cachyos {
               inherit inputs;
-              kernel = kernels.linux-cachyos-latest;
+            };
+            zfs-cachyos-lto = packages.linuxPackages-cachyos-latest-lto.callPackage ./zfs-cachyos {
+              inherit inputs;
             };
           };
       in
@@ -84,37 +86,48 @@
             cachyosKernels = self.legacyPackages."${final.stdenv.hostPlatform.system}";
           };
 
-          hydraJobs.packages = self.packages;
+          hydraJobs = {
+            inherit (self) packages;
+            nixosConfigurations = lib.mapAttrs (n: v: v.config.system.build.toplevel) self.nixosConfigurations;
+          };
 
           # Example configurations for testing CachyOS kernel
-          nixosConfigurations = lib.genAttrs systems (
-            system:
-            inputs.nixpkgs.lib.nixosSystem {
-              inherit system;
-              modules = [
-                (
-                  { pkgs, config, ... }:
-                  {
-                    nixpkgs.overlays = [ self.overlays.pinned ];
-                    boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+          nixosConfigurations =
+            let
+              mkSystem =
+                kernelPackageName:
+                inputs.nixpkgs.lib.nixosSystem {
+                  system = "x86_64-linux";
+                  modules = [
+                    (
+                      { pkgs, config, ... }:
+                      {
+                        nixpkgs.overlays = [ self.overlays.pinned ];
+                        boot.kernelPackages = pkgs.cachyosKernels."${kernelPackageName}";
 
-                    # ZFS test
-                    boot.supportedFilesystems.zfs = true;
-                    boot.zfs.package = config.boot.kernelPackages.zfs_cachyos;
-                    networking.hostId = "12345678";
+                        # ZFS test
+                        boot.supportedFilesystems.zfs = true;
+                        boot.zfs.package = config.boot.kernelPackages.zfs_cachyos;
+                        networking.hostId = "12345678";
 
-                    # Minimal config to make test configuration build
-                    boot.loader.grub.devices = [ "/dev/vda" ];
-                    fileSystems."/" = {
-                      device = "tmpfs";
-                      fsType = "tmpfs";
-                    };
-                    system.stateVersion = lib.trivial.release;
-                  }
-                )
-              ];
-            }
-          );
+                        # Minimal config to make test configuration build
+                        boot.loader.grub.devices = [ "/dev/vda" ];
+                        fileSystems."/" = {
+                          device = "tmpfs";
+                          fsType = "tmpfs";
+                        };
+                        system.stateVersion = lib.trivial.release;
+                      }
+                    )
+                  ];
+                };
+            in
+            {
+              cachyos-latest = mkSystem "linuxPackages-cachyos-latest";
+              cachyos-latest-lto = mkSystem "linuxPackages-cachyos-latest-lto";
+              cachyos-lts = mkSystem "linuxPackages-cachyos-lts";
+              cachyos-lts-lto = mkSystem "linuxPackages-cachyos-lts-lto";
+            };
         };
       }
     );
