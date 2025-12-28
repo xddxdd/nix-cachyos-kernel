@@ -54,11 +54,6 @@ lib.makeOverridable (
     # Additional args are passed to buildLinux.
     ...
   }@args:
-  assert lib.assertOneOf "LTO Valid Options" lto [
-    "none"
-    "thin"
-    "full"
-  ];
   let
     helpers = callPackage ../helpers.nix { };
     inherit (helpers) stdenvLLVM ltoMakeflags;
@@ -118,15 +113,12 @@ lib.makeOverridable (
         OVERLAY_FS_XINO_AUTO = no;
         OVERLAY_FS_METACOPY = no;
         OVERLAY_FS_DEBUG = no;
-
-        LTO_NONE = if lto == "none" then lib.kernel.yes else lib.kernel.no;
-        LTO_CLANG_THIN = if lto == "thin" then lib.kernel.yes else lib.kernel.no;
-        LTO_CLANG_FULL = if lto == "full" then lib.kernel.yes else lib.kernel.no;
       })
 
       # Apply CachyOS specific settings
       // (lib.mapAttrs (_: lib.mkForce) (
         cachySettings.common
+        // (cachySettings.lto."${lto}")
         // (lib.optionalAttrs (cpusched != null) cachySettings.cpusched."${cpusched}")
         // (lib.optionalAttrs kcfi cachySettings.kcfi)
         // (lib.optionalAttrs (hzTicks != null) cachySettings.hzTicks."${hzTicks}")

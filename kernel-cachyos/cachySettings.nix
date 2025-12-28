@@ -42,6 +42,24 @@ with lib.kernel;
     HZ = freeform hz;
   });
 
+  lto = {
+    none = {
+      LTO_NONE = yes;
+      LTO_CLANG_THIN = no;
+      LTO_CLANG_FULL = no;
+    };
+    thin = {
+      LTO_NONE = no;
+      LTO_CLANG_THIN = yes;
+      LTO_CLANG_FULL = no;
+    };
+    full = {
+      LTO_NONE = no;
+      LTO_CLANG_THIN = no;
+      LTO_CLANG_FULL = yes;
+    };
+  };
+
   performanceGovernor = {
     CPU_FREQ_DEFAULT_GOV_SCHEDUTIL = no;
     CPU_FREQ_DEFAULT_GOV_PERFORMANCE = yes;
