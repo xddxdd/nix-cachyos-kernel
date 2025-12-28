@@ -43,6 +43,8 @@ lib.makeOverridable (
     # CachyOS additional patch settings
     hardened ? false,
     rt ? false,
+    acpiCall ? false,
+    handheld ? false,
 
     # Build as much components as possible as kernel modules, including disabled ones.
     # This can enable unexpected modules, such as nova_core.
@@ -72,6 +74,8 @@ lib.makeOverridable (
       ++ (lib.optional (cpusched == "bmq") "sched/0001-prjc-cachy.patch")
       ++ (lib.optional hardened "misc/0001-hardened.patch")
       ++ (lib.optional rt "misc/0001-rt-i915.patch")
+      ++ (lib.optional acpiCall "misc/0001-acpi-call.patch")
+      ++ (lib.optional handheld "misc/0001-handheld.patch")
     );
 
     # buildLinux doesn't accept postPatch, so adding config file early here

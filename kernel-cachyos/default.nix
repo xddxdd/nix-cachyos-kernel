@@ -66,12 +66,16 @@ builtins.listToAttrs (
       pname = "linux-cachyos-deckify";
       inherit (linux_latest) version src;
       configVariant = "linux-cachyos-deckify";
+      acpiCall = true;
+      handheld = true;
     })
     (mkCachyKernel {
       pname = "linux-cachyos-deckify-lto";
       inherit (linux_latest) version src;
       configVariant = "linux-cachyos-deckify";
       lto = "thin";
+      acpiCall = true;
+      handheld = true;
     })
     (mkCachyKernel {
       pname = "linux-cachyos-eevdf";
