@@ -16,25 +16,23 @@ builtins.listToAttrs (
       pname = "linux-cachyos-latest";
       inherit (linux_latest) version src;
       configVariant = "linux-cachyos";
-      lto = false;
     })
     (mkCachyKernel {
       pname = "linux-cachyos-latest-lto";
       inherit (linux_latest) version src;
       configVariant = "linux-cachyos";
-      lto = true;
+      lto = "thin";
     })
     (mkCachyKernel {
       pname = "linux-cachyos-lts";
       inherit (linux) version src;
       configVariant = "linux-cachyos-lts";
-      lto = false;
     })
     (mkCachyKernel {
       pname = "linux-cachyos-lts-lto";
       inherit (linux) version src;
       configVariant = "linux-cachyos-lts";
-      lto = true;
+      lto = "thin";
     })
 
     # Additional CachyOS provided variants
@@ -42,81 +40,75 @@ builtins.listToAttrs (
       pname = "linux-cachyos-bmq";
       inherit (linux_latest) version src;
       configVariant = "linux-cachyos-bmq";
-      lto = false;
       cpusched = "bmq";
     })
     (mkCachyKernel {
       pname = "linux-cachyos-bmq-lto";
       inherit (linux_latest) version src;
       configVariant = "linux-cachyos-bmq";
-      lto = true;
+      lto = "thin";
       cpusched = "bmq";
     })
     (mkCachyKernel {
       pname = "linux-cachyos-bore";
       inherit (linux_latest) version src;
       configVariant = "linux-cachyos-bore";
-      lto = false;
       cpusched = "bore";
     })
     (mkCachyKernel {
       pname = "linux-cachyos-bore-lto";
       inherit (linux_latest) version src;
       configVariant = "linux-cachyos-bore";
-      lto = true;
+      lto = "thin";
       cpusched = "bore";
     })
     (mkCachyKernel {
       pname = "linux-cachyos-deckify";
       inherit (linux_latest) version src;
       configVariant = "linux-cachyos-deckify";
-      lto = false;
     })
     (mkCachyKernel {
       pname = "linux-cachyos-deckify-lto";
       inherit (linux_latest) version src;
       configVariant = "linux-cachyos-deckify";
-      lto = true;
+      lto = "thin";
     })
     (mkCachyKernel {
       pname = "linux-cachyos-eevdf";
       inherit (linux_latest) version src;
       configVariant = "linux-cachyos-eevdf";
       cpusched = "eevdf";
-      lto = false;
     })
     (mkCachyKernel {
       pname = "linux-cachyos-eevdf-lto";
       inherit (linux_latest) version src;
       configVariant = "linux-cachyos-eevdf";
       cpusched = "eevdf";
-      lto = true;
+      lto = "thin";
     })
     (mkCachyKernel {
       pname = "linux-cachyos-hardened";
       inherit (linux_latest) version src;
       configVariant = "linux-cachyos-hardened";
       hardened = true;
-      lto = false;
     })
     (mkCachyKernel {
       pname = "linux-cachyos-hardened-lto";
       inherit (linux_latest) version src;
       configVariant = "linux-cachyos-hardened";
       hardened = true;
-      lto = true;
+      lto = "thin";
     })
     (mkCachyKernel {
       pname = "linux-cachyos-rc";
       inherit (linux_testing) version src;
       configVariant = "linux-cachyos-rc";
-      lto = false;
     })
     (mkCachyKernel {
       pname = "linux-cachyos-rc-lto";
       inherit (linux_testing) version src;
       configVariant = "linux-cachyos-rc";
-      lto = true;
+      lto = "thin";
     })
     (mkCachyKernel {
       pname = "linux-cachyos-rt-bore";
@@ -124,7 +116,6 @@ builtins.listToAttrs (
       configVariant = "linux-cachyos-rt-bore";
       rt = true;
       cpusched = "bore";
-      lto = false;
     })
     (mkCachyKernel {
       pname = "linux-cachyos-rt-bore-lto";
@@ -132,7 +123,7 @@ builtins.listToAttrs (
       configVariant = "linux-cachyos-rt-bore";
       rt = true;
       cpusched = "bore";
-      lto = true;
+      lto = "thin";
     })
     (mkCachyKernel {
       pname = "linux-cachyos-server";
@@ -141,7 +132,6 @@ builtins.listToAttrs (
       cpusched = "eevdf";
       hzTicks = "300";
       preemptType = "none";
-      lto = false;
     })
     (mkCachyKernel {
       pname = "linux-cachyos-server-lto";
@@ -150,7 +140,7 @@ builtins.listToAttrs (
       cpusched = "eevdf";
       hzTicks = "300";
       preemptType = "none";
-      lto = true;
+      lto = "thin";
     })
   ]
 )

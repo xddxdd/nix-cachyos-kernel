@@ -17,8 +17,9 @@ lib.makeOverridable (
     # See https://github.com/CachyOS/linux-cachyos for available values.
     configVariant,
 
-    # Set to true to enable Clang+ThinLTO.
-    lto,
+    # Set to one of "none", "thin" or "full", anything other than "none" uses Clang
+    # to build the kernel with the selected LTO option
+    lto ? "none",
 
     # Patches to be applied in patchedSrc phase. This is different from buildLinux's kernelPatches.
     prePatch ? "",
@@ -53,6 +54,11 @@ lib.makeOverridable (
     # Additional args are passed to buildLinux.
     ...
   }@args:
+  assert lib.assertOneOf "LTO Valid Options" lto [
+    "none"
+    "thin"
+    "full"
+  ];
   let
     helpers = callPackage ../helpers.nix { };
     inherit (helpers) stdenvLLVM ltoMakeflags;
@@ -95,7 +101,7 @@ lib.makeOverridable (
       '';
     };
 
-    defaultLocalVersion = if lto then "-cachyos-lto" else "-cachyos";
+    defaultLocalVersion = if lto == "none" then "-cachyos" else "-cachyos-lto";
 
     cachySettings = callPackage ./cachySettings.nix { };
     structuredExtraConfig =
@@ -112,10 +118,10 @@ lib.makeOverridable (
         OVERLAY_FS_XINO_AUTO = no;
         OVERLAY_FS_METACOPY = no;
         OVERLAY_FS_DEBUG = no;
-      })
-      // (lib.optionalAttrs lto {
-        LTO_NONE = lib.kernel.no;
-        LTO_CLANG_THIN = lib.kernel.yes;
+
+        LTO_NONE = if lto == "none" then lib.kernel.yes else lib.kernel.no;
+        LTO_CLANG_THIN = if lto == "thin" then lib.kernel.yes else lib.kernel.no;
+        LTO_CLANG_FULL = if lto == "full" then lib.kernel.yes else lib.kernel.no;
       })
 
       # Apply CachyOS specific settings
@@ -149,9 +155,9 @@ lib.makeOverridable (
     // {
       inherit pname version;
       src = patchedSrc;
-      stdenv = args.stdenv or (if lto then stdenvLLVM else stdenv);
+      stdenv = args.stdenv or (if lto == "none" then stdenv else stdenvLLVM);
 
-      extraMakeFlags = (lib.optionals lto ltoMakeflags) ++ (args.extraMakeFlags or [ ]);
+      extraMakeFlags = (lib.optionals (lto != "none") ltoMakeflags) ++ (args.extraMakeFlags or [ ]);
 
       defconfig = args.defconfig or "cachyos_defconfig";
 
@@ -163,7 +169,10 @@ lib.makeOverridable (
       inherit structuredExtraConfig autoModules;
 
       extraMeta = {
-        description = "Linux CachyOS Kernel" + lib.optionalString lto " with Clang+ThinLTO";
+        description =
+          "Linux CachyOS Kernel"
+          + lib.optionalString (lto == "thin") " with Clang+ThinLTO"
+          + lib.optionalString (lto == "full") " with Clang+FullLTO";
         broken = !stdenv.isx86_64;
       }
       // (args.extraMeta or { });
