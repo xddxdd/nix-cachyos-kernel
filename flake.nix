@@ -86,6 +86,18 @@
             cachyosKernels = self.legacyPackages."${final.stdenv.hostPlatform.system}";
           };
 
+          mkCachyKernel =
+            { buildLinux, pkgs, ... } @ args:
+            (import ./kernel-cachyos/mkCachyKernel.nix) {
+              inherit inputs lib buildLinux args;
+              inherit (pkgs)
+                stdenv
+		callPackage
+                kernelPatches
+                applyPatches
+                ;
+            };
+
           hydraJobs = {
             inherit (self) packages;
             nixosConfigurations = lib.mapAttrs (n: v: v.config.system.build.toplevel) self.nixosConfigurations;
