@@ -8,9 +8,9 @@ body:
       value: |
         ## ⚠️ Before You Submit
 
-        Most kernel build failures are caused by CachyOS not updating patches for the latest kernel version.
+        Most kernel build failures are caused by version mismatch between CachyOS patches and nixpkgs kernel version.
 
-        If this is the case, the only option is to wait for the CachyOS team to update the patches.
+        If this is the case, the only option is to wait for the versions to be in sync again.
 
         Please consider using the `release` branch as it contains the last successful build:
 
@@ -30,9 +30,9 @@ body:
         Only submit an issue if the build has been failing for multiple consecutive days, or if it's failing on the `release` branch.
 
       options:
-        - label: I understand that most build failures are caused by CachyOS not updating patches for the latest kernel version
+        - label: I understand that most build failures are caused by version mismatch between CachyOS patches and nixpkgs kernel version
           required: true
-        - label: I understand that in most cases, the only option is to wait for the CachyOS team to update the patches
+        - label: I understand that in most cases, the only option is to wait for the versions to be in sync again
           required: true
         - label: The build has been failing for multiple consecutive days, OR it is failing on the `release` branch
           required: true

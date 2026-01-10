@@ -166,13 +166,13 @@ This repo also has [Garnix CI](https://garnix.io) set up, and should work as lon
 ```
 ### Help! My kernel is failing to build!
 
-In most cases, failing to build a kernel is caused by CachyOS not updating patches for the latest kernel version. (e.g. hardened 6.18 kernel as of 2025-12-12)
+In most cases, failing to build a kernel is caused by version mismatch between CachyOS patches and nixpkgs kernel version. (e.g. hardened 6.18 kernel as of 2025-12-12)
 
 Common symptoms are:
 - "File not found" error, which indicates that CachyOS patches for given kernel version/variant are unavailable.
 - Failures/conflicts when applying patches, which indicates that CachyOS patches are for an older kernel version.
 
-If this is the case, the only option is to wait for CachyOS team to update the patches.
+If this is the case, the only option is to wait for the versions to be in sync again.
 
 ## How to use ZFS modules
 
