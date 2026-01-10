@@ -1,0 +1,46 @@
+name: Build Failure Report
+description: Report a kernel build failure (please read carefully before submitting)
+title: '[Build Failure] '
+labels: ['build-failure']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ⚠️ Before You Submit
+
+        Most kernel build failures are caused by version mismatch between CachyOS patches and nixpkgs kernel version.
+
+        If this is the case, the build will be automatically fixed once the versions to be in sync again.
+
+        Please consider using the `release` branch as it contains the last successful build:
+
+        ```nix
+        {
+          inputs = {
+            nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+          }
+        }
+        ```
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Please confirm the following before submitting an issue
+      description: |
+        Only submit an issue if the build has been failing for multiple consecutive days, or if it's failing on the `release` branch.
+
+      options:
+        - label: I understand that most build failures are caused by version mismatch between CachyOS patches and nixpkgs kernel version
+          required: true
+        - label: I understand that in most cases, the build will be automatically fixed once the versions to be in sync again
+          required: true
+        - label: The build has been failing for multiple consecutive days, OR it is failing on the `release` branch
+          required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Issue Description
+      description: Describe the build failure (kernel variant, duration, error summary, etc.)
+    validations:
+      required: true
