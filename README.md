@@ -85,34 +85,35 @@ Add the repo's overlay in your NixOS configuration, this will expose the package
 
 ```nix
 {
-  nixosConfigurations.example = inputs.nixpkgs.lib.nixosSystem {
-    system = "x86_64-linux";
-    modules = [
-      (
-        { pkgs, ... }:
-        {
-          nixpkgs.overlays = [
-            # Build the kernels on top of nixpkgs version in your flake.
-            # Binary cache may be unavailable for the kernel/nixpkgs version combos.
-            self.overlays.default
+  outputs = { nix-cachyos-kernel, ... }: {
+    nixosConfigurations.example = inputs.nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        (
+          { pkgs, ... }:
+          {
+            nixpkgs.overlays = [
+              # Build the kernels on top of nixpkgs version in your flake.
+              # Binary cache may be unavailable for the kernel/nixpkgs version combos.
+              nix-cachyos-kernel.overlays.default
 
-            # Alternatively: use the exact kernel versions as defined in this repo.
-            # Guarantees you have binary cache.
-            self.overlays.pinned
+              # Alternatively: use the exact kernel versions as defined in this repo.
+              # Guarantees you have binary cache.
+              nix-cachyos-kernel.overlays.pinned
 
-            # Only use one of the two overlays!
-          ];
+              # Only use one of the two overlays!
+            ];
 
-          # ... your other configs
-        }
-      )
-    ];
+            # ... your other configs
+          }
+        )
+      ];
+    };
   };
 }
 ```
 
 Then specify `pkgs.cachyosKernels.linuxPackages-cachyos-latest` (or other variants you'd like) in your `boot.kernelPackages` option.
-
 
 ### Binary cache
 
@@ -144,31 +145,35 @@ This repo also has [Garnix CI](https://garnix.io) set up, and should work as lon
 
 ```nix
 {
-  nixosConfigurations.example = inputs.nixpkgs.lib.nixosSystem {
-    system = "x86_64-linux";
-    modules = [
-      (
-        { pkgs, ... }:
-        {
-          nixpkgs.overlays = [ self.overlays.pinned ];
-          boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+  outputs = { nix-cachyos-kernel, ... }: {
+    nixosConfigurations.example = inputs.nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        (
+          { pkgs, ... }:
+          {
+            nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
+            boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
 
-          # Binary cache
-          nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
-          nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
+            # Binary cache
+            nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
+            nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
 
-          # ... your other configs
-        }
-      )
-    ];
+            # ... your other configs
+          }
+        )
+      ];
+    };
   };
 }
 ```
+
 ### Help! My kernel is failing to build!
 
 In most cases, failing to build a kernel is caused by version mismatch between CachyOS patches and nixpkgs kernel version. (e.g. hardened 6.18 kernel as of 2025-12-12)
 
 Common symptoms are:
+
 - "File not found" error, which indicates that CachyOS patches for given kernel version/variant are unavailable.
 - Failures/conflicts when applying patches, which indicates that CachyOS patches are for an older kernel version.
 
@@ -182,23 +187,25 @@ To use ZFS module with `linuxPackages-cachyos-*` provided by this flake, point `
 
 ```nix
 {
-  nixosConfigurations.example = inputs.nixpkgs.lib.nixosSystem {
-    system = "x86_64-linux";
-    modules = [
-      (
-        { pkgs, ... }:
-        {
-          nixpkgs.overlays = [ self.overlay ];
-          boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+  outputs = { nix-cachyos-kernel, ... }: {
+    nixosConfigurations.example = inputs.nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        (
+          { pkgs, ... }:
+          {
+            nixpkgs.overlays = [ nix-cachyos-kernel.overlays.default ];
+            boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
 
-          # ZFS config
-          boot.supportedFilesystems.zfs = true;
-          boot.zfs.package = config.boot.kernelPackages.zfs_cachyos;
+            # ZFS config
+            boot.supportedFilesystems.zfs = true;
+            boot.zfs.package = config.boot.kernelPackages.zfs_cachyos;
 
-          # ... your other configs
-        }
-      )
-    ];
+            # ... your other configs
+          }
+        )
+      ];
+    };
   };
 }
 ```
@@ -207,25 +214,27 @@ If you want to construct your own `linuxPackages` attrset with `linuxKernel.pack
 
 ```nix
 {
-  nixosConfigurations.example = inputs.nixpkgs.lib.nixosSystem {
-    system = "x86_64-linux";
-    modules = [
-      (
-        { pkgs, ... }:
-        {
-          nixpkgs.overlays = [ self.overlay ];
-          boot.kernelPackages = pkgs.linuxKernel.packagesFor pkgs.cachyosKernels.linux-cachyos-latest;
+  outputs = { nix-cachyos-kernel, ... }: {
+    nixosConfigurations.example = inputs.nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        (
+          { pkgs, ... }:
+          {
+            nixpkgs.overlays = [ nix-cachyos-kernel.overlays.default ];
+            boot.kernelPackages = pkgs.linuxKernel.packagesFor pkgs.cachyosKernels.linux-cachyos-latest;
 
-          # ZFS config
-          boot.supportedFilesystems.zfs = true;
-          boot.zfs.package = pkgs.cachyosKernels.zfs-cachyos.override {
-            kernel = config.boot.kernelPackages.kernel;
-          };
+            # ZFS config
+            boot.supportedFilesystems.zfs = true;
+            boot.zfs.package = pkgs.cachyosKernels.zfs-cachyos.override {
+              kernel = config.boot.kernelPackages.kernel;
+            };
 
-          # ... your other configs
-        }
-      )
-    ];
+            # ... your other configs
+          }
+        )
+      ];
+    };
   };
 }
 ```
