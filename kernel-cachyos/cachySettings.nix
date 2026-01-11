@@ -95,6 +95,10 @@ with lib.kernel;
       MZEN4 = yes;
       X86_NATIVE_CPU = no;
     };
+    native = {
+      GENERIC_CPU = no;
+      X86_NATIVE_CPU = yes;
+    };
   };
 
   tickrate = {
