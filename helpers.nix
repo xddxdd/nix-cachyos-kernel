@@ -29,6 +29,9 @@ rec {
     "READELF=${buildLLVM.llvm}/bin/llvm-readelf"
     "HOSTCC=${hostLLVM.clangUseLLVM}/bin/clang"
     "HOSTCXX=${hostLLVM.clangUseLLVM}/bin/clang++"
+
+    # Mute nixpkgs CC wrapper warnings for Clang+LTO
+    "NIX_CC_WRAPPER_SUPPRESS_TARGET_WARNING=1"
   ];
 
   stdenvLLVM =
