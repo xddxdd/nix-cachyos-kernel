@@ -128,6 +128,12 @@
                         nixpkgs.overlays = [ self.overlays.pinned ];
                         boot.kernelPackages = pkgs.cachyosKernels."${kernelPackageName}";
 
+                        # NVIDIA test
+                        hardware.graphics.enable = true;
+                        services.xserver.videoDrivers = [ "nvidia" ];
+                        hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
+                        hardware.nvidia.open = false;
+
                         # ZFS test
                         boot.supportedFilesystems.zfs = true;
                         boot.zfs.package = config.boot.kernelPackages.zfs_cachyos;
