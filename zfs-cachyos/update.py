@@ -99,8 +99,14 @@ def main() -> int:
         print("nix-prefetch-git execution failed, exiting")
         return 1
 
-    script_dir = Path(__file__).parent
-    output_file = script_dir / "version.json"
+    current = Path.cwd()
+    while not (current / "flake.lock").exists():
+        if current == current.parent:
+            print("Could not find flake.lock in any parent directory, exiting")
+            return 1
+        current = current.parent
+
+    output_file = current / "zfs-cachyos" / "version.json"
 
     save_version_info(latest_branch, prefetch_data, output_file)
 

@@ -66,9 +66,7 @@ jobs:
         run: |
           export TMPDIR=/nix/tmpdir
           nix flake update
-
-          chmod +x zfs-cachyos/update.py
-          zfs-cachyos/update.py
+          nix run .#update-zfs-cachyos
 
       - name: Commit back to repository
         uses: stefanzweifel/git-auto-commit-action@v7

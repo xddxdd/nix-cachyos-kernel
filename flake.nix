@@ -68,6 +68,25 @@
             # Packages only contain linux-cachyos-* due to Flake schema requirements
             packages = lib.filterAttrs (_: lib.isDerivation) legacyPackages;
 
+            apps.update-zfs-cachyos = {
+              type = "app";
+              program =
+                let
+                  python = pkgs.python3.withPackages (ps: [ ps.requests ]);
+                  script = pkgs.writeShellApplication {
+                    name = "update-zfs-cachyos";
+                    runtimeInputs = [
+                      python
+                      pkgs.nix-prefetch-git
+                    ];
+                    text = ''
+                      python3 ${./zfs-cachyos/update.py}
+                    '';
+                  };
+                in
+                lib.getExe script;
+            };
+
             # Allow build unfree modules such as nvidia_x11
             _module.args.pkgs = lib.mkForce (
               import inputs.nixpkgs {
