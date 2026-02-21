@@ -126,9 +126,11 @@ Then specify `pkgs.cachyosKernels.linuxPackages-cachyos-latest` (or other varian
 
 ### Binary cache
 
+The two binary caches will be automatically suggested
+
 I'm running a Hydra CI to build the kernels and push them to my Attic binary cache. You can see the build status here: <https://hydra.lantian.pub/jobset/lantian/nix-cachyos-kernel>
 
-To use my binary cache, please add the following config:
+To manually use my binary cache, please add the following config:
 
 ```nix
 {
@@ -142,6 +144,8 @@ This repo also has [Garnix CI](https://garnix.io) set up, and should work as lon
 [![built with garnix](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fgarnix.io%2Fapi%2Fbadges%2Fxddxdd%2Fnix-cachyos-kernel)](https://garnix.io/repo/xddxdd/nix-cachyos-kernel)
 
 > If you see "all builds failed" from Garnix, it means I ran out of free plan's build time.
+
+To manually use it:
 
 ```nix
 {
