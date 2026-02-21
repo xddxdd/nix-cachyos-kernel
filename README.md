@@ -24,9 +24,17 @@ This repo provides the following kernel variants, consistent with the [upstream 
         ├───linux-cachyos-latest-lto-x86_64-v3
         ├───linux-cachyos-latest-lto-x86_64-v4
         ├───linux-cachyos-latest-lto-zen4
-        # LTS kernel, provide LTO variants
+        # LTS kernel, provide all LTO/CPU arch variants
         ├───linux-cachyos-lts
+        ├───linux-cachyos-lts-x86_64-v2
+        ├───linux-cachyos-lts-x86_64-v3
+        ├───linux-cachyos-lts-x86_64-v4
+        ├───linux-cachyos-lts-zen4
         ├───linux-cachyos-lts-lto
+        ├───linux-cachyos-lts-lto-x86_64-v2
+        ├───linux-cachyos-lts-lto-x86_64-v3
+        ├───linux-cachyos-lts-lto-x86_64-v4
+        ├───linux-cachyos-lts-lto-zen4
         # Additional CachyOS kernel variants
         ├───linux-cachyos-bmq
         ├───linux-cachyos-bmq-lto

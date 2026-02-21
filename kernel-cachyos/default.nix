@@ -84,10 +84,62 @@ builtins.listToAttrs (
       configVariant = "linux-cachyos-lts";
     })
     (mkCachyKernel {
+      pname = "linux-cachyos-lts-x86_64-v2";
+      inherit (linux) version src;
+      configVariant = "linux-cachyos-lts";
+      processorOpt = "x86_64-v2";
+    })
+    (mkCachyKernel {
+      pname = "linux-cachyos-lts-x86_64-v3";
+      inherit (linux) version src;
+      configVariant = "linux-cachyos-lts";
+      processorOpt = "x86_64-v3";
+    })
+    (mkCachyKernel {
+      pname = "linux-cachyos-lts-x86_64-v4";
+      inherit (linux) version src;
+      configVariant = "linux-cachyos-lts";
+      processorOpt = "x86_64-v4";
+    })
+    (mkCachyKernel {
+      pname = "linux-cachyos-lts-zen4";
+      inherit (linux) version src;
+      configVariant = "linux-cachyos-lts";
+      processorOpt = "zen4";
+    })
+    (mkCachyKernel {
       pname = "linux-cachyos-lts-lto";
       inherit (linux) version src;
       configVariant = "linux-cachyos-lts";
       lto = "thin";
+    })
+    (mkCachyKernel {
+      pname = "linux-cachyos-lts-lto-x86_64-v2";
+      inherit (linux) version src;
+      configVariant = "linux-cachyos-lts";
+      lto = "thin";
+      processorOpt = "x86_64-v2";
+    })
+    (mkCachyKernel {
+      pname = "linux-cachyos-lts-lto-x86_64-v3";
+      inherit (linux) version src;
+      configVariant = "linux-cachyos-lts";
+      lto = "thin";
+      processorOpt = "x86_64-v3";
+    })
+    (mkCachyKernel {
+      pname = "linux-cachyos-lts-lto-x86_64-v4";
+      inherit (linux) version src;
+      configVariant = "linux-cachyos-lts";
+      lto = "thin";
+      processorOpt = "x86_64-v4";
+    })
+    (mkCachyKernel {
+      pname = "linux-cachyos-lts-lto-zen4";
+      inherit (linux) version src;
+      configVariant = "linux-cachyos-lts";
+      lto = "thin";
+      processorOpt = "zen4";
     })
 
     # Additional CachyOS provided variants
