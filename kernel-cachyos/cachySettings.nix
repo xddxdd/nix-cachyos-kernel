@@ -4,6 +4,7 @@ with lib.kernel;
 {
   common = {
     CACHY = yes;
+    RUST = yes;
 
     # https://wiki.cachyos.org/configuration/general_system_tweaks/#adios-io-scheduler
     MQ_IOSCHED_ADIOS = yes;
