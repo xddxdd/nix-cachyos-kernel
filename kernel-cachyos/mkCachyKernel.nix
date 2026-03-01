@@ -83,8 +83,7 @@ lib.makeOverridable (
 
     cachyosConfigFile = "${inputs.cachyos-kernel.outPath}/${configVariant}/config";
     cachyosPatches = builtins.map (p: "${inputs.cachyos-kernel-patches.outPath}/${patchVersion}/${p}") (
-      [ "all/0001-cachyos-base-all.patch" ]
-      ++ (lib.optional (cpusched == "bore") "sched/0001-bore-cachy.patch")
+      (lib.optional (cpusched == "bore") "sched/0001-bore-cachy.patch")
       ++ (lib.optional (cpusched == "bmq") "sched/0001-prjc-cachy.patch")
       ++ (lib.optional hardened "misc/0001-hardened.patch")
       ++ (lib.optional rt "misc/0001-rt-i915.patch")

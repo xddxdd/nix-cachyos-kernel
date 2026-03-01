@@ -60,11 +60,12 @@ jobs:
           sudo systemctl daemon-reload
           sudo systemctl restart nix-daemon
 
-      - name: Build nix packages
+      - name: Update sources
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           export TMPDIR=/nix/tmpdir
+          nix run .#update-cachyos-kernel-sources
           nix flake update
           nix run .#update-zfs-cachyos
 

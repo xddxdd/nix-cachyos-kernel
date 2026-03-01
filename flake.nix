@@ -99,6 +99,25 @@
                 lib.getExe script;
             };
 
+            apps.update-cachyos-kernel-sources = {
+              type = "app";
+              program =
+                let
+                  python = pkgs.python3.withPackages (ps: [ ps.requests ]);
+                  script = pkgs.writeShellApplication {
+                    name = "update-cachyos-kernel-sources";
+                    runtimeInputs = [
+                      python
+                      pkgs.nix
+                    ];
+                    text = ''
+                      python3 ${./kernel-cachyos/update.py}
+                    '';
+                  };
+                in
+                lib.getExe script;
+            };
+
             # Allow build unfree modules such as nvidia_x11
             _module.args.pkgs = lib.mkForce (
               import inputs.nixpkgs {
