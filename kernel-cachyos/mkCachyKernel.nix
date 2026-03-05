@@ -31,7 +31,7 @@ lib.makeOverridable (
     # CachyOS fine tuning settings, see ./cachySettings.nix for corresponding options
     # Default value sourced from https://github.com/CachyOS/linux-cachyos/blob/master/linux-cachyos/PKGBUILD
     # Set to null or false to disable
-    cpusched ? "bore",
+    cpusched ? "eevdf",
     kcfi ? false,
     hzTicks ? "1000",
     performanceGovernor ? false,
