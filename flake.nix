@@ -120,14 +120,9 @@
 
         flake = {
           overlay = self.overlays.pinned;
-          overlays.default =
-            lib.warn
-              "\"nix-cachyos-kernel.overlays.default\" may cause kernel/patch version mismatch and build failure. Please use \"nix-cachyos-kernel.overlays.pinned\" instead."
-              (
-                final: prev: {
-                  cachyosKernels = loadPackages prev;
-                }
-              );
+          overlays.default = final: prev: {
+            cachyosKernels = loadPackages prev;
+          };
           overlays.pinned = final: prev: {
             cachyosKernels = self.legacyPackages."${final.stdenv.hostPlatform.system}";
           };
