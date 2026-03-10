@@ -102,13 +102,13 @@ Add the repo's overlay in your NixOS configuration, this will expose the package
           { pkgs, ... }:
           {
             nixpkgs.overlays = [
-              # Use the exact kernel versions as defined in this repo.
-              # Guarantees you have binary cache.
-              nix-cachyos-kernel.overlays.pinned
-
-              # Alternatively, build the kernels on top of nixpkgs version in your flake.
-              # This might cause version mismatch/build failures!
+              # Use nixpkgs from your environment, nixpkgs.config will apply.
+              # Has small chance of kernel modules not being compatible with kernel version.
               nix-cachyos-kernel.overlays.default
+
+              # Alternatively, use the exact nixpkgs revison as defined in this repo.
+              # Guarantees you have binary cache, but initializes another nixpkgs instance.
+              nix-cachyos-kernel.overlays.pinned
 
               # Only use one of the two overlays!
             ];
@@ -123,6 +123,17 @@ Add the repo's overlay in your NixOS configuration, this will expose the package
 ```
 
 Then specify `pkgs.cachyosKernels.linuxPackages-cachyos-latest` (or other variants you'd like) in your `boot.kernelPackages` option.
+
+> Note: Previously I recommended the `pinned` overlay, as nix-cachyos-kernel applies patches on top of the latest kernel available in nixpkgs, and with `default` overlay there might be a version mismatch between nixpkgs and nix-cachyos-kernel. This is no longer the case since 2026-03-01 when [nix-cachyos-kernel switched to pre-patched kernel source released by CachyOS](https://github.com/xddxdd/nix-cachyos-kernel/commit/a3da9122076ae33d52828d1e6c4a2595378f0ca2). Now the kernel versions are defined in nix-cachyos-kernel instead of depending on nixpkgs, so the `default` overlay is safe to use as well.
+>
+> Use `default` if:
+> - You want to avoid initializing multiple instances of nixpkgs.
+> - You want to use latest kernel modules that are just merged/updated within nixpkgs.
+> - You want to customize `nixpkgs.config` options.
+>
+> Use `pinned` if:
+> - You want to ensure that you can fetch kernel from binary cache.
+> - You want to make sure that the kernel can be built successfully.
 
 ### Binary cache
 
