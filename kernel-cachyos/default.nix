@@ -204,13 +204,13 @@ builtins.listToAttrs (
     })
     (mkCachyKernel {
       pname = "linux-cachyos-hardened";
-      inherit (linuxSources.latest) version src;
+      inherit (linuxSources.hardened) version src;
       configVariant = "linux-cachyos-hardened";
       hardened = true;
     })
     (mkCachyKernel {
       pname = "linux-cachyos-hardened-lto";
-      inherit (linuxSources.latest) version src;
+      inherit (linuxSources.hardened) version src;
       configVariant = "linux-cachyos-hardened";
       hardened = true;
       lto = "thin";

@@ -67,7 +67,7 @@ def run_nix_prefetch_url(url: str) -> str:
 
 if __name__ == "__main__":
     versions = {}
-    for variant in ["latest", "lts", "rc"]:
+    for variant in ["latest", "lts", "rc", "hardened"]:
         print(f"{variant=}")
         srctag = get_srctag(variant)
         real_version = "-".join(srctag.split("-")[1:-1])

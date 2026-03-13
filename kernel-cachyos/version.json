@@ -13,5 +13,10 @@
     "version": "7.0-rc3",
     "url": "https://github.com/CachyOS/linux/releases/download/cachyos-7.0-rc3-1/cachyos-7.0-rc3-1.tar.gz",
     "hash": "sha256-+oWnfrNyTioD00QqvV5mbDoz/h/bjIVe0f+uWekjnFI="
+  },
+  "hardened": {
+    "version": "6.18.17",
+    "url": "https://github.com/CachyOS/linux/releases/download/cachyos-6.18.17-1/cachyos-6.18.17-1.tar.gz",
+    "hash": "sha256-qpTxo8Q+4Bn3vXl7VHOc4vS4WswrlqNDCr9TQZHdC2Y="
   }
 }
