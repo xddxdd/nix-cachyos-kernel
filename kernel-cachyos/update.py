@@ -1,16 +1,19 @@
 import json
-from pathlib import Path
 import subprocess
 import tempfile
+from pathlib import Path
 
 
 def get_srctag(variant: str = "latest") -> str:
     with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as dir:
         subprocess.run(
-            ["nix", "build", ".#cachyos-kernel-input-path", "-o", f"{dir}/result"], check=True
+            ["nix", "build", ".#cachyos-kernel-input-path", "-o", f"{dir}/result"],
+            check=True,
         )
 
-        pkgbuild_path = f"linux-cachyos-{variant}" if variant != "latest" else "linux-cachyos"
+        pkgbuild_path = (
+            f"linux-cachyos-{variant}" if variant != "latest" else "linux-cachyos"
+        )
 
         with open(f"{dir}/result/{pkgbuild_path}/PKGBUILD") as f:
             pkgbuild = f.read()
@@ -33,7 +36,9 @@ def nix_sha256_to_sri(hash: str) -> str:
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
 
     if result.returncode != 0:
-        raise RuntimeError(f"nix hash command failed with return code: {result.returncode}")
+        raise RuntimeError(
+            f"nix hash command failed with return code: {result.returncode}"
+        )
 
     output = result.stdout.strip()
     if not output:
@@ -49,7 +54,9 @@ def run_nix_prefetch_url(url: str) -> str:
     result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
 
     if result.returncode != 0:
-        raise RuntimeError(f"nix-prefetch-url command failed with return code: {result.returncode}")
+        raise RuntimeError(
+            f"nix-prefetch-url command failed with return code: {result.returncode}"
+        )
 
     output = result.stdout.strip()
     if not output:
@@ -80,7 +87,9 @@ if __name__ == "__main__":
     current = Path.cwd()
     while not (current / "flake.lock").exists():
         if current == current.parent:
-            raise RuntimeError("Could not find flake.lock in any parent directory, exiting")
+            raise RuntimeError(
+                "Could not find flake.lock in any parent directory, exiting"
+            )
         current = current.parent
 
     output_file = current / "kernel-cachyos" / "version.json"
