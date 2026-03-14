@@ -146,6 +146,15 @@ lib.makeOverridable (
         // (lib.optionalAttrs (autofdo != false) {
           AUTOFDO_CLANG = lib.kernel.yes;
         })
+        // (lib.optionalAttrs (hardened != false) {
+          # required because hardened kernels use the latent entropy gcc plugin
+          # which the rust bindgen currently doesn't support. They're waiting on
+          # this patch to be merged:
+          # https://lore.kernel.org/all/20251221081659.1742800-1-stijn@linux-ipv6.be/
+          # from what I can see, this still hasn't been merged into 7.0, so may
+          # be a bit
+          RUST = lib.kernel.no;
+        })
       ))
 
       # Apply user custom settings
