@@ -297,7 +297,7 @@ The following arguments can be passed to `mkCachyKernel`:
 
 **CachyOS Fine Tuning Settings:**
 
-- **`cpusched`**: CPU scheduler. Options: `"bore"` (default), `"bmq"`, or `null` to disable.
+- **`cpusched`**: CPU scheduler. Options: `"eevdf"` (default), `"bore"`, `"bmq"`, `"hardened"`, `"rt"`, `"rt-bore"` or `null` to disable.
 - **`kcfi`**: Enable Kernel Control Flow Integrity. Default: `false`.
 - **`hzTicks`**: Timer frequency. Options: `"1000"` (default), `"250"`, `"300"`, `"500"`, `"750"`, or `null` to disable.
 - **`performanceGovernor`**: Enable performance governor. Default: `false`.
