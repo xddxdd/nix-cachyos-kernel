@@ -4,7 +4,7 @@ import tempfile
 from pathlib import Path
 
 
-def get_srctag(variant: str = "latest") -> str:
+def get_srcname(variant: str = "latest") -> str:
     with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as dir:
         subprocess.run(
             ["nix", "build", ".#cachyos-kernel-input-path", "-o", f"{dir}/result"],
@@ -18,7 +18,7 @@ def get_srctag(variant: str = "latest") -> str:
         with open(f"{dir}/result/{pkgbuild_path}/PKGBUILD") as f:
             pkgbuild = f.read()
 
-        script = pkgbuild + "\necho $_srctag"
+        script = pkgbuild + "\necho $_srcname"
         result = subprocess.run(
             ["bash"],
             input=script,
@@ -69,11 +69,11 @@ if __name__ == "__main__":
     versions = {}
     for variant in ["latest", "lts", "rc", "hardened"]:
         print(f"{variant=}")
-        srctag = get_srctag(variant)
-        real_version = "-".join(srctag.split("-")[1:-1])
-        print(f"{srctag=} {real_version=}")
+        srcname = get_srcname(variant)
+        real_version = "-".join(srcname.split("-")[1:-1])
+        print(f"{srcname=} {real_version=}")
 
-        url = f"https://github.com/CachyOS/linux/releases/download/{srctag}/{srctag}.tar.gz"
+        url = f"https://github.com/CachyOS/linux/releases/download/{srcname}/{srcname}.tar.gz"
         print(f"{url=}")
         hash = run_nix_prefetch_url(url)
         hash = nix_sha256_to_sri(hash)
