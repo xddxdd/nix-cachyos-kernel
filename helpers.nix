@@ -48,8 +48,8 @@ rec {
       stdenv' = pkgs.overrideCC hostLLVM.stdenv hostLLVM.clangUseLLVM;
     in
     stdenv'.override (old: {
-      hostPlatform = mkLLVMPlatform old.hostPlatform;
-      buildPlatform = mkLLVMPlatform old.buildPlatform;
+      hostPlatform = mkLLVMPlatform stdenv'.hostPlatform;
+      buildPlatform = mkLLVMPlatform stdenv'.buildPlatform;
       extraNativeBuildInputs = [
         hostLLVM.lld
         pkgs.patchelf
