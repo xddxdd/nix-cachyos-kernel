@@ -16,6 +16,7 @@ with lib.kernel;
     bmq = {
       SCHED_ALT = yes;
       SCHED_BMQ = yes;
+      SCHED_POC_SELECTOR = no;
     };
     eevdf = { };
     rt = {
