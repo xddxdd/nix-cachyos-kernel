@@ -5,9 +5,9 @@
     "hash": "sha256-2DXjHcxmZb5D2oSE0mfiLjP5+LWeTyiSzpQXBecoMYo="
   },
   "lts": {
-    "version": "6.18.22",
-    "url": "https://github.com/CachyOS/linux/releases/download/cachyos-6.18.22-1/cachyos-6.18.22-1.tar.gz",
-    "hash": "sha256-vRszbKgSN+3DSWfyZ7RUhDn/KliucXU8XLy7YJe5TZQ="
+    "version": "6.18.23",
+    "url": "https://github.com/CachyOS/linux/releases/download/cachyos-6.18.23-1/cachyos-6.18.23-1.tar.gz",
+    "hash": "sha256-xldhTP9ixBmLy9g2iGxazT0byDKf/9KyRXKNZt/MwHc="
   },
   "rc": {
     "version": "7.0-rc7",
