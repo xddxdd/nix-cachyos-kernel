@@ -13,7 +13,7 @@ This repo provides the following kernel variants, consistent with the [upstream 
 ```bash
 └───packages
     └───x86_64-linux
-        # Latest kernel, provide all LTO/CPU arch variants
+        # Latest kernel, provides all LTO/CPU arch variants
         ├───linux-cachyos-latest
         ├───linux-cachyos-latest-x86_64-v2
         ├───linux-cachyos-latest-x86_64-v3
@@ -24,7 +24,7 @@ This repo provides the following kernel variants, consistent with the [upstream 
         ├───linux-cachyos-latest-lto-x86_64-v3
         ├───linux-cachyos-latest-lto-x86_64-v4
         ├───linux-cachyos-latest-lto-zen4
-        # LTS kernel, provide all LTO/CPU arch variants
+        # LTS kernel, provides all LTO/CPU arch variants
         ├───linux-cachyos-lts
         ├───linux-cachyos-lts-x86_64-v2
         ├───linux-cachyos-lts-x86_64-v3
@@ -58,7 +58,7 @@ The kernel versions are automatically kept in sync with Nixpkgs, so once the lat
 
 Use `nix flake show github:xddxdd/nix-cachyos-kernel/release` to see the current effective versions.
 
-The kernels ending in `-lto` has Clang+ThinLTO enabled.
+The kernels ending in `-lto` have Clang+ThinLTO enabled.
 
 For each linux kernel entry under `packages`, we have a corresponding `linuxPackages` entry under `legacyPackages` for easier use in your NixOS configuration, e.g.:
 
@@ -67,7 +67,7 @@ For each linux kernel entry under `packages`, we have a corresponding `linuxPack
 
 ## How to use kernels
 
-Add the `release` branch this repo to the inputs section of your `flake.nix`:
+Add the `release` branch of this repo to the inputs section of your `flake.nix`:
 
 ```nix
 {
@@ -106,7 +106,7 @@ Add the repo's overlay in your NixOS configuration, this will expose the package
               # Has small chance of kernel modules not being compatible with kernel version.
               nix-cachyos-kernel.overlays.default
 
-              # Alternatively, use the exact nixpkgs revison as defined in this repo.
+              # Alternatively, use the exact nixpkgs revision as defined in this repo.
               # Guarantees you have binary cache, but initializes another nixpkgs instance.
               nix-cachyos-kernel.overlays.pinned
 
@@ -127,11 +127,13 @@ Then specify `pkgs.cachyosKernels.linuxPackages-cachyos-latest` (or other varian
 > Note: Previously I recommended the `pinned` overlay, as nix-cachyos-kernel applies patches on top of the latest kernel available in nixpkgs, and with `default` overlay there might be a version mismatch between nixpkgs and nix-cachyos-kernel. This is no longer the case since 2026-03-01 when [nix-cachyos-kernel switched to pre-patched kernel source released by CachyOS](https://github.com/xddxdd/nix-cachyos-kernel/commit/a3da9122076ae33d52828d1e6c4a2595378f0ca2). Now the kernel versions are defined in nix-cachyos-kernel instead of depending on nixpkgs, so the `default` overlay is safe to use as well.
 >
 > Use `default` if:
+>
 > - You want to avoid initializing multiple instances of nixpkgs.
 > - You want to use latest kernel modules that are just merged/updated within nixpkgs.
 > - You want to customize `nixpkgs.config` options.
 >
 > Use `pinned` if:
+>
 > - You want to ensure that you can fetch kernel from binary cache.
 > - You want to make sure that the kernel can be built successfully.
 
@@ -205,7 +207,7 @@ Common symptoms are:
 - "File not found" error, which indicates that CachyOS patches for given kernel version/variant are unavailable.
 - Failures/conflicts when applying patches, which indicates that CachyOS patches are for an older kernel version.
 
-If this is the case, the build will be automatically fixed once versions to be in sync again.
+If this is the case, the build will be automatically fixed once versions are in sync again.
 
 ## How to use ZFS modules
 
@@ -238,7 +240,7 @@ To use ZFS module with `linuxPackages-cachyos-*` provided by this flake, point `
 }
 ```
 
-If you want to construct your own `linuxPackages` attrset with `linuxKernel.packagesFor (path to your kernel)`, you can directly reference the `zfs-cachyos` attribute in this flake's `packages` / `legayPackages` output, or the `cachyosKernels` overlay:
+If you want to construct your own `linuxPackages` attrset with `linuxKernel.packagesFor (path to your kernel)`, such as for customizing your kernel, you can directly reference the `zfs-cachyos` attribute in this flake's `packages` / `legacyPackages` output, or the `cachyosKernels` overlay:
 
 ```nix
 {
@@ -248,15 +250,22 @@ If you want to construct your own `linuxPackages` attrset with `linuxKernel.pack
       modules = [
         (
           { pkgs, ... }:
+          let
+            kernel = pkgs.cachyosKernels.linux-cachyos-latest.override {
+              # Your own customizations
+            };
+          in
           {
             nixpkgs.overlays = [ nix-cachyos-kernel.overlays.default ];
-            boot.kernelPackages = pkgs.linuxKernel.packagesFor pkgs.cachyosKernels.linux-cachyos-latest;
+            boot.kernelPackages = (pkgs.linuxKernel.packagesFor kernel).extend (final: prev: {
+              zfs_cachyos = pkgs.cachyosKernels.zfs-cachyos.override {
+                inherit kernel;
+              };
+            });
 
             # ZFS config
             boot.supportedFilesystems.zfs = true;
-            boot.zfs.package = pkgs.cachyosKernels.zfs-cachyos.override {
-              kernel = config.boot.kernelPackages.kernel;
-            };
+            boot.zfs.package = config.boot.kernelPackages.zfs_cachyos;
 
             # ... your other configs
           }
