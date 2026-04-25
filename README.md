@@ -276,6 +276,8 @@ If you want to construct your own `linuxPackages` attrset with `linuxKernel.pack
 }
 ```
 
+> If you are still running into issues, see [this comment](https://github.com/xddxdd/nix-cachyos-kernel/issues/67#issuecomment-4305704829) for a possible workaround.
+
 ### Help! My ZFS module is failing to build!
 
 In most cases, failing to build ZFS module is caused by CachyOS not updating patches for the latest kernel version. The only option is to wait for CachyOS team to update the patches.
