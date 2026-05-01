@@ -1,13 +1,13 @@
 {
   "latest": {
-    "version": "7.0.2",
-    "url": "https://github.com/CachyOS/linux/releases/download/cachyos-7.0.2-1/cachyos-7.0.2-1.tar.gz",
-    "hash": "sha256-ng2MG/rKFfUmdCNYIfVnXH1E2qT9LFC4vXhGb8JBcro="
+    "version": "7.0.3",
+    "url": "https://github.com/CachyOS/linux/releases/download/cachyos-7.0.3-1/cachyos-7.0.3-1.tar.gz",
+    "hash": "sha256-7xaaAaclTkYgKPeHVPwFS1hRkZiKK2kAm++JPEvqFys="
   },
   "lts": {
-    "version": "6.18.25",
-    "url": "https://github.com/CachyOS/linux/releases/download/cachyos-6.18.25-1/cachyos-6.18.25-1.tar.gz",
-    "hash": "sha256-kQQoDiAclBeX9RcmOH41D/uZP89jddY+zoNRpX1wBW4="
+    "version": "6.18.26",
+    "url": "https://github.com/CachyOS/linux/releases/download/cachyos-6.18.26-1/cachyos-6.18.26-1.tar.gz",
+    "hash": "sha256-8KwEL8Flq7eY2FFeFKI1LwSTJvpg9OvLbd4L626E2Bk="
   },
   "rc": {
     "version": "7.1-rc1",
