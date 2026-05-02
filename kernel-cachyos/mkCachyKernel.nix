@@ -103,6 +103,8 @@ lib.makeOverridable (
       ]
       ++ cachyosPatches
       ++ patches;
+
+      inherit prePatch;
       postPatch = ''
         install -Dm644 ${cachyosConfigFile} arch/x86/configs/cachyos_defconfig
       ''
