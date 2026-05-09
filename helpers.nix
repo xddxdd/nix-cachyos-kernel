@@ -55,4 +55,28 @@ rec {
         pkgs.patchelf
       ];
     });
+
+  kernelModuleLLVMOverride =
+    kernelPackages_:
+    kernelPackages_.extend (
+      _final: prev:
+      lib.mapAttrs (
+        n: v:
+        if
+          builtins.elem "LLVM=1" kernelPackages_.kernel.commonMakeFlags
+          && !(builtins.elem n [ "kernel" ])
+          && lib.isDerivation v
+          && ((v.overrideAttrs or null) != null)
+        then
+          v.overrideAttrs (old: {
+            postPatch = (if (old.postPatch or null) == null then "" else old.postPatch) + ''
+              if [ -f Makefile ]; then
+                substituteInPlace Makefile --replace "gcc" "cc"
+              fi
+            '';
+          })
+        else
+          v
+      ) prev
+    );
 }
