@@ -1,26 +1,26 @@
 {
   "latest": {
-    "commit": "0829cf892b5d7b3a0e8aa76cc7aca02b84f62557",
-    "version": "2.4.1",
-    "url": "https://github.com/CachyOS/zfs/archive/0829cf892b5d7b3a0e8aa76cc7aca02b84f62557.tar.gz",
-    "hash": "sha256-39nZNnXeGrUhyt7Qa8hkQusLepAfctsBLRbMcENVrvU="
+    "commit": "6330a45b06d20125de679aae5f63ba14082671ef",
+    "version": "2.4.2",
+    "url": "https://github.com/CachyOS/zfs/archive/6330a45b06d20125de679aae5f63ba14082671ef.tar.gz",
+    "hash": "sha256-82DTa4gyvwU0ihF+QLjEJU7M9/DQ2xipDXKOFyoMGTg="
   },
   "lts": {
-    "commit": "1c702dda346a59e05cfd3029569bbb1d5d91c54b",
-    "version": "2.4.1",
-    "url": "https://github.com/CachyOS/zfs/archive/1c702dda346a59e05cfd3029569bbb1d5d91c54b.tar.gz",
-    "hash": "sha256-wu+yhK06AAVEvaTmnh3OvGKi1mi3LIR9FqS9Fa1/k9w="
+    "commit": "6330a45b06d20125de679aae5f63ba14082671ef",
+    "version": "2.4.2",
+    "url": "https://github.com/CachyOS/zfs/archive/6330a45b06d20125de679aae5f63ba14082671ef.tar.gz",
+    "hash": "sha256-82DTa4gyvwU0ihF+QLjEJU7M9/DQ2xipDXKOFyoMGTg="
   },
   "rc": {
-    "commit": "0829cf892b5d7b3a0e8aa76cc7aca02b84f62557",
-    "version": "2.4.1",
-    "url": "https://github.com/CachyOS/zfs/archive/0829cf892b5d7b3a0e8aa76cc7aca02b84f62557.tar.gz",
-    "hash": "sha256-39nZNnXeGrUhyt7Qa8hkQusLepAfctsBLRbMcENVrvU="
+    "commit": "6330a45b06d20125de679aae5f63ba14082671ef",
+    "version": "2.4.2",
+    "url": "https://github.com/CachyOS/zfs/archive/6330a45b06d20125de679aae5f63ba14082671ef.tar.gz",
+    "hash": "sha256-82DTa4gyvwU0ihF+QLjEJU7M9/DQ2xipDXKOFyoMGTg="
   },
   "hardened": {
-    "commit": "1c702dda346a59e05cfd3029569bbb1d5d91c54b",
-    "version": "2.4.1",
-    "url": "https://github.com/CachyOS/zfs/archive/1c702dda346a59e05cfd3029569bbb1d5d91c54b.tar.gz",
-    "hash": "sha256-wu+yhK06AAVEvaTmnh3OvGKi1mi3LIR9FqS9Fa1/k9w="
+    "commit": "6330a45b06d20125de679aae5f63ba14082671ef",
+    "version": "2.4.2",
+    "url": "https://github.com/CachyOS/zfs/archive/6330a45b06d20125de679aae5f63ba14082671ef.tar.gz",
+    "hash": "sha256-82DTa4gyvwU0ihF+QLjEJU7M9/DQ2xipDXKOFyoMGTg="
   }
 }
