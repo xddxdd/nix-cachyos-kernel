@@ -34,12 +34,13 @@ This repo provides the following kernel variants, consistent with the [upstream 
         # Additional CachyOS kernel variants
         ├───linux-cachyos-bmq
         ├───linux-cachyos-bmq-lto
+        ├───linux-cachyos-bore
         ├───linux-cachyos-bore-x86_64-v3
         ├───linux-cachyos-bore-x86_64-v4
         ├───linux-cachyos-bore-zen4
         ├───linux-cachyos-bore-lto
         ├───linux-cachyos-bore-lto-x86_64-v3
-        ├───linux-cachyos-bore-lto-x86_64-v3
+        ├───linux-cachyos-bore-lto-x86_64-v4
         ├───linux-cachyos-bore-lto-zen4
         ├───linux-cachyos-deckify
         ├───linux-cachyos-deckify-lto
