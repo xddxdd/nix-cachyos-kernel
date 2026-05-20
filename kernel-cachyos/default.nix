@@ -17,11 +17,17 @@ let
 in
 builtins.listToAttrs (
   builtins.map (v: lib.nameValuePair v.pname v) [
-    # Latest kernel, provide all LTO and v3/v4/zen4 arch variants
+    # Latest kernel, provide all LTO and v2/v3/v4/zen4 arch variants
     (mkCachyKernel {
       pname = "linux-cachyos-latest";
       inherit (linuxSources.latest) version src;
       configVariant = "linux-cachyos";
+    })
+    (mkCachyKernel {
+      pname = "linux-cachyos-latest-x86_64-v2";
+      inherit (linuxSources.latest) version src;
+      configVariant = "linux-cachyos";
+      processorOpt = "x86_64-v2";
     })
     (mkCachyKernel {
       pname = "linux-cachyos-latest-x86_64-v3";
@@ -46,6 +52,13 @@ builtins.listToAttrs (
       inherit (linuxSources.latest) version src;
       configVariant = "linux-cachyos";
       lto = "thin";
+    })
+    (mkCachyKernel {
+      pname = "linux-cachyos-latest-lto-x86_64-v2";
+      inherit (linuxSources.latest) version src;
+      configVariant = "linux-cachyos";
+      lto = "thin";
+      processorOpt = "x86_64-v2";
     })
     (mkCachyKernel {
       pname = "linux-cachyos-latest-lto-x86_64-v3";
@@ -76,6 +89,12 @@ builtins.listToAttrs (
       configVariant = "linux-cachyos-lts";
     })
     (mkCachyKernel {
+      pname = "linux-cachyos-lts-x86_64-v2";
+      inherit (linuxSources.lts) version src;
+      configVariant = "linux-cachyos-lts";
+      processorOpt = "x86_64-v2";
+    })
+    (mkCachyKernel {
       pname = "linux-cachyos-lts-x86_64-v3";
       inherit (linuxSources.lts) version src;
       configVariant = "linux-cachyos-lts";
@@ -98,6 +117,13 @@ builtins.listToAttrs (
       inherit (linuxSources.lts) version src;
       configVariant = "linux-cachyos-lts";
       lto = "thin";
+    })
+    (mkCachyKernel {
+      pname = "linux-cachyos-lts-lto-x86_64-v2";
+      inherit (linuxSources.lts) version src;
+      configVariant = "linux-cachyos-lts";
+      lto = "thin";
+      processorOpt = "x86_64-v2";
     })
     (mkCachyKernel {
       pname = "linux-cachyos-lts-lto-x86_64-v3";
