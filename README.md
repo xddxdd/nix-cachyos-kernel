@@ -15,33 +15,40 @@ This repo provides the following kernel variants, consistent with the [upstream 
     └───x86_64-linux
         # Latest kernel, provides all LTO/CPU arch variants
         ├───linux-cachyos-latest
+        ├───linux-cachyos-latest-x86_64-v2 (no binary cache)
         ├───linux-cachyos-latest-x86_64-v3
         ├───linux-cachyos-latest-x86_64-v4
         ├───linux-cachyos-latest-zen4
         ├───linux-cachyos-latest-lto
+        ├───linux-cachyos-latest-lto-x86_64-v2 (no binary cache)
         ├───linux-cachyos-latest-lto-x86_64-v3
         ├───linux-cachyos-latest-lto-x86_64-v4
         ├───linux-cachyos-latest-lto-zen4
         # LTS kernel, provides all LTO/CPU arch variants
         ├───linux-cachyos-lts
+        ├───linux-cachyos-lts-x86_64-v2 (no binary cache)
         ├───linux-cachyos-lts-x86_64-v3
         ├───linux-cachyos-lts-x86_64-v4
         ├───linux-cachyos-lts-zen4
         ├───linux-cachyos-lts-lto
+        ├───linux-cachyos-lts-lto-x86_64-v2 (no binary cache)
         ├───linux-cachyos-lts-lto-x86_64-v3
         ├───linux-cachyos-lts-lto-x86_64-v4
         ├───linux-cachyos-lts-lto-zen4
-        # Additional CachyOS kernel variants
-        ├───linux-cachyos-bmq
-        ├───linux-cachyos-bmq-lto
+        # Latest kernel with BORE scheduler, all LTO/CPU arch variants
         ├───linux-cachyos-bore
+        ├───linux-cachyos-bore-x86_64-v2 (no binary cache)
         ├───linux-cachyos-bore-x86_64-v3
         ├───linux-cachyos-bore-x86_64-v4
         ├───linux-cachyos-bore-zen4
         ├───linux-cachyos-bore-lto
+        ├───linux-cachyos-bore-lto-x86_64-v2 (no binary cache)
         ├───linux-cachyos-bore-lto-x86_64-v3
         ├───linux-cachyos-bore-lto-x86_64-v4
         ├───linux-cachyos-bore-lto-zen4
+        # Additional CachyOS kernel variants
+        ├───linux-cachyos-bmq
+        ├───linux-cachyos-bmq-lto
         ├───linux-cachyos-deckify
         ├───linux-cachyos-deckify-lto
         ├───linux-cachyos-eevdf
@@ -145,6 +152,8 @@ The two binary caches will be automatically suggested
 
 I'm running a Hydra CI to build the kernels and push them to my Attic binary cache. You can see the build status here: <https://hydra.lantian.pub/jobset/lantian/nix-cachyos-kernel>
 
+Note that due to build capacity limitations, I do not build kernel variants with `x86_64-v2` CPU optimization.
+
 To manually use my binary cache, please add the following config:
 
 ```nix
@@ -157,6 +166,8 @@ To manually use my binary cache, please add the following config:
 **Important:** As with all binary caches, after adding binary cache to your NixOS configuration, please apply your settings once before enabling CachyOS kernel, so that the binary cache settings can take effect.
 
 This repo also has [Garnix CI](https://garnix.io) set up, and should work as long as the total build time is below the free plan threshold.
+
+Garnix CI only builds the latest/LTO kernel variants, with/without LTO, and without any CPU specific optimizations.
 
 [![built with garnix](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fgarnix.io%2Fapi%2Fbadges%2Fxddxdd%2Fnix-cachyos-kernel)](https://garnix.io/repo/xddxdd/nix-cachyos-kernel)
 

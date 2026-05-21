@@ -150,7 +150,7 @@
             };
 
           hydraJobs = {
-            inherit (self) packages;
+            packages.x86_64-linux = lib.filterAttrs (n: _: !lib.hasSuffix "-v2" n) self.packages.x86_64-linux;
             nixosConfigurations = lib.mapAttrs (n: v: v.config.system.build.toplevel) self.nixosConfigurations;
           };
 
