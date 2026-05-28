@@ -93,7 +93,7 @@
         flake = {
           overlay = self.overlays.pinned;
           overlays.default = final: prev: {
-            cachyosKernels = loadPackages prev;
+            cachyosKernels = import ./loadPackages.nix inputs prev;
           };
           overlays.pinned = final: prev: {
             cachyosKernels = self.legacyPackages."${final.stdenv.hostPlatform.system}";
