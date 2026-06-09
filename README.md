@@ -107,13 +107,12 @@ Add the repo's overlay in your NixOS configuration, this will expose the package
           { pkgs, ... }:
           {
             nixpkgs.overlays = [
-              # Use nixpkgs from your environment, nixpkgs.config will apply.
-              # Has small chance of kernel modules not being compatible with kernel version.
-              nix-cachyos-kernel.overlays.default
-
-              # Alternatively, use the exact nixpkgs revision as defined in this repo.
-              # Guarantees you have binary cache, but initializes another nixpkgs instance.
+              # Use the exact nixpkgs revision as defined in this repo to ensure binary cache hits.
               nix-cachyos-kernel.overlays.pinned
+
+              # Alternatively, use nixpkgs from your environment, nixpkgs.config will apply.
+              # Note: may not hit binary cache; kernel will need to be built locally.
+              # nix-cachyos-kernel.overlays.default
 
               # Only use one of the two overlays!
             ];
@@ -129,28 +128,28 @@ Add the repo's overlay in your NixOS configuration, this will expose the package
 
 Then specify `pkgs.cachyosKernels.linuxPackages-cachyos-latest` (or other variants you'd like) in your `boot.kernelPackages` option.
 
-> Note: Previously I recommended the `pinned` overlay, as nix-cachyos-kernel applies patches on top of the latest kernel available in nixpkgs, and with `default` overlay there might be a version mismatch between nixpkgs and nix-cachyos-kernel. This is no longer the case since 2026-03-01 when [nix-cachyos-kernel switched to pre-patched kernel source released by CachyOS](https://github.com/xddxdd/nix-cachyos-kernel/commit/a3da9122076ae33d52828d1e6c4a2595378f0ca2). Now the kernel versions are defined in nix-cachyos-kernel instead of depending on nixpkgs, so the `default` overlay is safe to use as well.
+> **`pinned` overlay is recommended** to ensure binary cache hits. The `pinned` overlay uses the exact nixpkgs revision defined in this flake, matching what was used to build the cached kernels. With the `default` overlay, a different nixpkgs revision may cause cache misses and trigger local kernel compilation even if a cached kernel is available.
+>
+> Use `pinned` if:
+>
+> - You want to ensure that you can fetch kernel from binary cache.
+> - You want to make sure that the kernel can be built successfully.
 >
 > Use `default` if:
 >
 > - You want to avoid initializing multiple instances of nixpkgs.
 > - You want to use latest kernel modules that are just merged/updated within nixpkgs.
 > - You want to customize `nixpkgs.config` options.
->
-> Use `pinned` if:
->
-> - You want to ensure that you can fetch kernel from binary cache.
-> - You want to make sure that the kernel can be built successfully.
 
 ### Binary cache
 
-The two binary caches will be automatically suggested
+The binary cache is automatically configured via [`nixConfig`](flake.nix:21-28) in this flake, so Nix will prompt you to accept it when you first use this repo.
 
 I'm running a Hydra CI to build the kernels and push them to my Attic binary cache. You can see the build status here: <https://hydra.lantian.pub/jobset/lantian/nix-cachyos-kernel>
 
 Note that due to build capacity limitations, I do not build kernel variants with `x86_64-v2` CPU optimization.
 
-To manually use my binary cache, please add the following config:
+If you prefer to manually configure the binary cache (or are not using flakes), add the following config:
 
 ```nix
 {
@@ -175,9 +174,8 @@ To manually use my binary cache, please add the following config:
             nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
             boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
 
-            # Binary cache
-            nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
-            nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
+            # Binary cache is auto-configured via nixConfig in flake.nix,
+            # no additional binary cache config is needed.
 
             # ... your other configs
           }
@@ -214,7 +212,7 @@ To use ZFS module with `linuxPackages-cachyos-*` provided by this flake, point `
         (
           { pkgs, ... }:
           {
-            nixpkgs.overlays = [ nix-cachyos-kernel.overlays.default ];
+            nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
             boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
 
             # ZFS config
@@ -246,7 +244,7 @@ If you want to construct your own `linuxPackages` attrset with `linuxKernel.pack
             };
           in
           {
-            nixpkgs.overlays = [ nix-cachyos-kernel.overlays.default ];
+            nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
             boot.kernelPackages = (pkgs.linuxKernel.packagesFor kernel).extend (final: prev: {
               zfs_cachyos = pkgs.cachyosKernels.zfs-cachyos.override {
                 inherit kernel;
