@@ -1,0 +1,45 @@
+name: Binary Cache Miss Report
+description: Report a binary cache miss issue
+title: '[Binary Cache Miss] '
+labels: ['binary-cache-miss']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ⚠️ Before You Submit
+
+        If you run into an issue with my provided binary cache, it's often caused by the kernel evaluated differently than what is in this repository.
+
+        Here are some common steps you can try to fix the issue:
+
+        - Use the `release` branch instead of `master` branch. `release` branch contains kernels that are built by my CI and cached.
+        - Use the `nix-cachyos-kernel.overlays.pinned` overlay instead of `default`. The `pinned` overlay uses nixpkgs from this repo.
+        - Make sure you are not overriding the `nixpkgs` input of this flake, such as `inputs.nixpkgs.follows = "..."`.
+
+        This flake should be imported exactly as:
+
+        ```nix
+        inputs = {
+          nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+        };
+        ```
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Please confirm the following before submitting an issue
+      options:
+        - label: I am using the `release` branch (`github:xddxdd/nix-cachyos-kernel/release`)
+          required: true
+        - label: I am using `nix-cachyos-kernel.overlays.pinned` (not `overlays.default`)
+          required: true
+        - label: I am not overriding inputs of this flake
+          required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Issue Description
+      description: Describe the issue you are running into.
+    validations:
+      required: true
