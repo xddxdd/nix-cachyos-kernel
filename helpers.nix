@@ -36,9 +36,20 @@ rec {
 
   stdenvLLVM =
     let
+      mkLLVMPlatform =
+        platform:
+        platform
+        // {
+          linux-kernel = (platform.linux-kernel or { }) // {
+            makeFlags = (platform.linux-kernel.makeFlags or [ ]) ++ ltoMakeflags;
+          };
+        };
+
       stdenv' = pkgs.overrideCC hostLLVM.stdenv hostLLVM.clangUseLLVM;
     in
     stdenv'.override (old: {
+      hostPlatform = mkLLVMPlatform stdenv'.hostPlatform;
+      buildPlatform = mkLLVMPlatform stdenv'.buildPlatform;
       extraNativeBuildInputs = [
         hostLLVM.lld
         pkgs.patchelf
