@@ -72,6 +72,8 @@ For each linux kernel entry under `packages`, we have a corresponding `linuxPack
 
 ## How to use kernels
 
+#### Flakes
+
 Add the `release` branch of this repo to the inputs section of your `flake.nix`:
 
 ```nix
@@ -140,6 +142,32 @@ Then specify `pkgs.cachyosKernels.linuxPackages-cachyos-latest` (or other varian
 > - You want to avoid initializing multiple instances of nixpkgs.
 > - You want to use latest kernel modules that are just merged/updated within nixpkgs.
 > - You want to customize `nixpkgs.config` options.
+
+#### Non-Flakes
+
+This flakes is usable in non-flakes nix configuration using npins and the following snippet:
+
+Npins commands:
+```bash
+npins init
+npins add github xddxdd nix-cachyos-kernel
+```
+
+```nix
+let
+  sources = import ./npins/default.nix;
+  cachy-source = import sources.nix-cachyos-kernel;
+  cachy-kernel =
+    cachy-source.outputs.legacyPackages.x86_64-linux.linuxPackages-cachyos-bore-lto-x86_64-v3;
+in
+{
+  boot.kernelPackages = cachy-kernel;
+}
+```
+
+You may also fetch the flakes directly using fetchFromGitHub,
+but note that you will have to manually update the revision and hash to update your kernel, which is tedious.
+
 
 ### Binary cache
 
