@@ -201,7 +201,7 @@ lib.makeOverridable (
           "Linux CachyOS Kernel"
           + lib.optionalString (lto == "thin") " with Clang+ThinLTO"
           + lib.optionalString (lto == "full") " with Clang+FullLTO";
-        broken = !stdenv.isx86_64;
+        broken = !stdenv.hostPlatform.isx86_64;
       }
       // (args.extraMeta or { });
 
