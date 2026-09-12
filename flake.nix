@@ -112,27 +112,33 @@
                 # Latest kernel
                 linux-cachyos-latest
                 linux-cachyos-latest-lto
+                linux-cachyos-latest-lto-x86_64-v2
                 linux-cachyos-latest-lto-x86_64-v3
                 linux-cachyos-latest-lto-x86_64-v4
                 linux-cachyos-latest-lto-zen4
+                linux-cachyos-latest-x86_64-v2
                 linux-cachyos-latest-x86_64-v3
                 linux-cachyos-latest-x86_64-v4
                 linux-cachyos-latest-zen4
                 # LTS kernel
                 linux-cachyos-lts
                 linux-cachyos-lts-lto
+                linux-cachyos-lts-lto-x86_64-v2
                 linux-cachyos-lts-lto-x86_64-v3
                 linux-cachyos-lts-lto-x86_64-v4
                 linux-cachyos-lts-lto-zen4
+                linux-cachyos-lts-x86_64-v2
                 linux-cachyos-lts-x86_64-v3
                 linux-cachyos-lts-x86_64-v4
                 linux-cachyos-lts-zen4
                 # Latest kernel with BORE scheduler
                 linux-cachyos-bore
                 linux-cachyos-bore-lto
+                linux-cachyos-bore-lto-x86_64-v2
                 linux-cachyos-bore-lto-x86_64-v3
                 linux-cachyos-bore-lto-x86_64-v4
                 linux-cachyos-bore-lto-zen4
+                linux-cachyos-bore-x86_64-v2
                 linux-cachyos-bore-x86_64-v3
                 linux-cachyos-bore-x86_64-v4
                 linux-cachyos-bore-zen4
