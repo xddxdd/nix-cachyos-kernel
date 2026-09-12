@@ -11,34 +11,34 @@ This repo provides the following kernel variants, consistent with the [upstream 
     └───x86_64-linux
         # Latest kernel, provides all LTO/CPU arch variants
         ├───linux-cachyos-latest
-        ├───linux-cachyos-latest-x86_64-v2 (no binary cache)
+        ├───linux-cachyos-latest-x86_64-v2
         ├───linux-cachyos-latest-x86_64-v3
         ├───linux-cachyos-latest-x86_64-v4
         ├───linux-cachyos-latest-zen4
         ├───linux-cachyos-latest-lto
-        ├───linux-cachyos-latest-lto-x86_64-v2 (no binary cache)
+        ├───linux-cachyos-latest-lto-x86_64-v2
         ├───linux-cachyos-latest-lto-x86_64-v3
         ├───linux-cachyos-latest-lto-x86_64-v4
         ├───linux-cachyos-latest-lto-zen4
         # LTS kernel, provides all LTO/CPU arch variants
         ├───linux-cachyos-lts
-        ├───linux-cachyos-lts-x86_64-v2 (no binary cache)
+        ├───linux-cachyos-lts-x86_64-v2
         ├───linux-cachyos-lts-x86_64-v3
         ├───linux-cachyos-lts-x86_64-v4
         ├───linux-cachyos-lts-zen4
         ├───linux-cachyos-lts-lto
-        ├───linux-cachyos-lts-lto-x86_64-v2 (no binary cache)
+        ├───linux-cachyos-lts-lto-x86_64-v2
         ├───linux-cachyos-lts-lto-x86_64-v3
         ├───linux-cachyos-lts-lto-x86_64-v4
         ├───linux-cachyos-lts-lto-zen4
         # Latest kernel with BORE scheduler, all LTO/CPU arch variants
         ├───linux-cachyos-bore
-        ├───linux-cachyos-bore-x86_64-v2 (no binary cache)
+        ├───linux-cachyos-bore-x86_64-v2
         ├───linux-cachyos-bore-x86_64-v3
         ├───linux-cachyos-bore-x86_64-v4
         ├───linux-cachyos-bore-zen4
         ├───linux-cachyos-bore-lto
-        ├───linux-cachyos-bore-lto-x86_64-v2 (no binary cache)
+        ├───linux-cachyos-bore-lto-x86_64-v2
         ├───linux-cachyos-bore-lto-x86_64-v3
         ├───linux-cachyos-bore-lto-x86_64-v4
         ├───linux-cachyos-bore-lto-zen4
@@ -56,10 +56,19 @@ This repo provides the following kernel variants, consistent with the [upstream 
         ├───linux-cachyos-rt-bore
         ├───linux-cachyos-rt-bore-lto (no binary cache)
         ├───linux-cachyos-server
-        └───linux-cachyos-server-lto (no binary cache)
+        ├───linux-cachyos-server-lto (no binary cache)
+        # ZFS module matching CachyOS kernels
+        ├───zfs-cachyos
+        ├───zfs-cachyos-lto
+        ├───zfs-cachyos-lts
+        ├───zfs-cachyos-lts-lto
+        ├───zfs-cachyos-hardened
+        ├───zfs-cachyos-hardened-lto (no binary cache)
+        ├───zfs-cachyos-rc
+        └───zfs-cachyos-rc-lto (no binary cache)
 ```
 
-The kernel versions are automatically kept in sync with Nixpkgs, so once the latest/LTS kernel is updated in Nixpkgs, CachyOS kernels in this repo will automatically catch up.
+The kernel versions are automatically kept in sync with upstream CachyOS releases via a daily GitHub Action (see [update.py](update.py)), so once CachyOS updates their kernels, this repo will automatically catch up.
 
 Use `nix flake show github:xddxdd/nix-cachyos-kernel/release` to see the current effective versions.
 
@@ -145,7 +154,7 @@ Then specify `pkgs.cachyosKernels.linuxPackages-cachyos-latest` (or other varian
 
 #### Non-Flakes
 
-This flakes is usable in non-flakes nix configuration using npins and the following snippet:
+This flake is usable in non-flakes nix configuration using npins and the following snippet:
 
 Npins commands:
 ```bash
@@ -171,11 +180,11 @@ but note that you will have to manually update the revision and hash to update y
 
 ### Binary cache
 
-The binary cache is automatically configured via [`nixConfig`](flake.nix:21-28) in this flake, so Nix will prompt you to accept it when you first use this repo.
+The binary cache is automatically configured via [`nixConfig`](flake.nix:12-19) in this flake, so Nix will prompt you to accept it when you first use this repo.
 
 I'm running a Hydra CI to build the kernels and push them to my Attic binary cache. You can see the build status here: <https://hydra.lantian.pub/jobset/lantian/nix-cachyos-kernel>
 
-Note that due to build capacity limitations, I do not build kernel variants with `x86_64-v2` CPU optimization.
+Due to build capacity limitations, LTO variants of the less used kernels (`bmq`, `deckify`, `eevdf`, `hardened`, `rc`, `rt-bore`, `server`) are not built.
 
 If you prefer to manually configure the binary cache (or are not using flakes), add the following config:
 
@@ -324,7 +333,8 @@ The following arguments can be passed to `mkCachyKernel`:
 - **`pname`**: Package name for the kernel
 - **`version`**: Kernel version string
 - **`src`**: Kernel source derivation
-- **`configVariant`**: Kernel config variant to use as defconfig (e.g., `"linux-cachyos-lts"`). See [CachyOS linux-cachyos repo](https://github.com/CachyOS/linux-cachyos) for available values.
+- **`cachyosConfigFile`**: CachyOS kernel config file to use as defconfig. See [CachyOS linux-cachyos repo](https://github.com/CachyOS/linux-cachyos) for available configs.
+- **`cachyosPatchesSrc`**: Source of [CachyOS kernel-patches](https://github.com/CachyOS/kernel-patches), rooted at the directory for your kernel's major.minor version.
 
 #### Optional Arguments
 
@@ -343,13 +353,13 @@ The following arguments can be passed to `mkCachyKernel`:
 
 - **`cpusched`**: CPU scheduler. Options: `"eevdf"` (default), `"bore"`, `"bmq"`, `"rt"`, `"rt-bore"` or `null` to disable.
 - **`kcfi`**: Enable Kernel Control Flow Integrity. Default: `false`.
-- **`hzTicks`**: Timer frequency. Options: `"1000"` (default), `"250"`, `"300"`, `"500"`, `"750"`, or `null` to disable.
+- **`hzTicks`**: Timer frequency. Options: `"1000"` (default), `"100"`, `"250"`, `"300"`, `"500"`, `"600"`, `"750"`, or `null` to disable.
 - **`performanceGovernor`**: Enable performance governor. Default: `false`.
-- **`tickrate`**: Tick rate. Options: `"full"` (default), `"periodic"`, `"idle"`, `"nohz_full"`, or `null` to disable.
-- **`preemptType`**: Preemption type. Options: `"full"` (default), `"voluntary"`, `"none"`, or `null` to disable.
+- **`tickrate`**: Tick rate. Options: `"full"` (default), `"periodic"`, `"idle"`, or `null` to disable.
+- **`preemptType`**: Preemption type. Options: `"full"` (default), `"lazy"`, `"voluntary"`, `"none"`, or `null` to disable.
 - **`ccHarder`**: Enable harder compiler optimizations. Default: `true`.
 - **`bbr3`**: Enable BBR3 TCP congestion control. Default: `false`.
-- **`hugepage`**: Huge page settings. Options: `"always"` (default), `"madvise"`, `"never"`, or `null` to disable.
+- **`hugepage`**: Huge page settings. Options: `"always"` (default), `"madvise"`, or `null` to disable.
 
 **CachyOS Additional Patch Settings:**
 
@@ -367,6 +377,7 @@ The following arguments can be passed to `mkCachyKernel`:
 **Module Settings:**
 
 - **`autoModules`**: Build as many components as possible as kernel modules, including disabled ones. Default: `true`.
+- **`zfsVariant`**: CachyOS kernel variant whose ZFS module is built into the corresponding `linuxPackages` entry (see `zfs-cachyos/version.json`). Default: `"latest"`.
 
 **Other Options:**
 
