@@ -3,8 +3,8 @@
     "configHash": "sha256-PfMxEuM1f+tqiZu/wAby3tFSJtGy63QayYbVgbnKd3M=",
     "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/7269746718b4352087c1418f67e71bbf45fe3184/linux-cachyos/config",
     "hash": "sha256-GEhwW2jvWi4CYOYfdRMf50FWJ+s9RTMpZl/npGiXqKQ=",
-    "patchHash": "sha256-rtwfmS9hL5oLEEKpaRm1tO9rOACRPmULYHrYOtbmbFQ=",
-    "patchRev": "d5db2a953637445998d2b0e5ab52ea9c04860a24",
+    "patchHash": "sha256-jSZEeUl33A8TCOdnDc5ft9LAnMMFb0U9FoGr/yRJMAU=",
+    "patchRev": "edb006d5cea1b0544fd084ad6e3683e0ab2090c7",
     "patchVersion": "7.2",
     "url": "https://github.com/CachyOS/linux/releases/download/cachyos-7.2.6-1/cachyos-7.2.6-1.tar.gz",
     "version": "7.2.6"
@@ -13,8 +13,8 @@
     "configHash": "sha256-PfMxEuM1f+tqiZu/wAby3tFSJtGy63QayYbVgbnKd3M=",
     "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/7269746718b4352087c1418f67e71bbf45fe3184/linux-cachyos-bmq/config",
     "hash": "sha256-GEhwW2jvWi4CYOYfdRMf50FWJ+s9RTMpZl/npGiXqKQ=",
-    "patchHash": "sha256-rtwfmS9hL5oLEEKpaRm1tO9rOACRPmULYHrYOtbmbFQ=",
-    "patchRev": "d5db2a953637445998d2b0e5ab52ea9c04860a24",
+    "patchHash": "sha256-jSZEeUl33A8TCOdnDc5ft9LAnMMFb0U9FoGr/yRJMAU=",
+    "patchRev": "edb006d5cea1b0544fd084ad6e3683e0ab2090c7",
     "patchVersion": "7.2",
     "url": "https://github.com/CachyOS/linux/releases/download/cachyos-7.2.6-1/cachyos-7.2.6-1.tar.gz",
     "version": "7.2.6"
@@ -23,8 +23,8 @@
     "configHash": "sha256-PfMxEuM1f+tqiZu/wAby3tFSJtGy63QayYbVgbnKd3M=",
     "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/7269746718b4352087c1418f67e71bbf45fe3184/linux-cachyos-bore/config",
     "hash": "sha256-GEhwW2jvWi4CYOYfdRMf50FWJ+s9RTMpZl/npGiXqKQ=",
-    "patchHash": "sha256-rtwfmS9hL5oLEEKpaRm1tO9rOACRPmULYHrYOtbmbFQ=",
-    "patchRev": "d5db2a953637445998d2b0e5ab52ea9c04860a24",
+    "patchHash": "sha256-jSZEeUl33A8TCOdnDc5ft9LAnMMFb0U9FoGr/yRJMAU=",
+    "patchRev": "edb006d5cea1b0544fd084ad6e3683e0ab2090c7",
     "patchVersion": "7.2",
     "url": "https://github.com/CachyOS/linux/releases/download/cachyos-7.2.6-1/cachyos-7.2.6-1.tar.gz",
     "version": "7.2.6"
@@ -33,8 +33,8 @@
     "configHash": "sha256-LqM5ZOsEBteKpTsLVdzeEFJhdOZtqo14KVuSQq6aAJI=",
     "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/7269746718b4352087c1418f67e71bbf45fe3184/linux-cachyos-deckify/config",
     "hash": "sha256-Gk+lWtaJqY/ApFGu/HvjDm5paRx55apAfO0Qo2RO3WI=",
-    "patchHash": "sha256-rtwfmS9hL5oLEEKpaRm1tO9rOACRPmULYHrYOtbmbFQ=",
-    "patchRev": "d5db2a953637445998d2b0e5ab52ea9c04860a24",
+    "patchHash": "sha256-jSZEeUl33A8TCOdnDc5ft9LAnMMFb0U9FoGr/yRJMAU=",
+    "patchRev": "edb006d5cea1b0544fd084ad6e3683e0ab2090c7",
     "patchVersion": "7.2",
     "url": "https://github.com/CachyOS/linux/releases/download/cachyos-7.2.3-2/cachyos-7.2.3-2.tar.gz",
     "version": "7.2.3"
@@ -43,8 +43,8 @@
     "configHash": "sha256-PfMxEuM1f+tqiZu/wAby3tFSJtGy63QayYbVgbnKd3M=",
     "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/7269746718b4352087c1418f67e71bbf45fe3184/linux-cachyos-eevdf/config",
     "hash": "sha256-GEhwW2jvWi4CYOYfdRMf50FWJ+s9RTMpZl/npGiXqKQ=",
-    "patchHash": "sha256-rtwfmS9hL5oLEEKpaRm1tO9rOACRPmULYHrYOtbmbFQ=",
-    "patchRev": "d5db2a953637445998d2b0e5ab52ea9c04860a24",
+    "patchHash": "sha256-jSZEeUl33A8TCOdnDc5ft9LAnMMFb0U9FoGr/yRJMAU=",
+    "patchRev": "edb006d5cea1b0544fd084ad6e3683e0ab2090c7",
     "patchVersion": "7.2",
     "url": "https://github.com/CachyOS/linux/releases/download/cachyos-7.2.6-1/cachyos-7.2.6-1.tar.gz",
     "version": "7.2.6"
@@ -54,7 +54,7 @@
     "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/7269746718b4352087c1418f67e71bbf45fe3184/linux-cachyos-hardened/config",
     "hash": "sha256-bpJpN3uIL8YXg/LXEkb6gxgpqlWmBtxyQNS93im/zD0=",
     "patchHash": "sha256-5OQO5Ex48IScBHOpT6UW2rIJ78syETFP5VI7hUmHuEw=",
-    "patchRev": "d5db2a953637445998d2b0e5ab52ea9c04860a24",
+    "patchRev": "edb006d5cea1b0544fd084ad6e3683e0ab2090c7",
     "patchVersion": "7.1",
     "url": "https://github.com/CachyOS/linux/releases/download/cachyos-7.1.8-1/cachyos-7.1.8-1.tar.gz",
     "version": "7.1.8"
@@ -64,7 +64,7 @@
     "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/7269746718b4352087c1418f67e71bbf45fe3184/linux-cachyos-lts/config",
     "hash": "sha256-NvuLjdB7a/b9zm4XD1lQLpcXc6xgS2FMnLI198i4eVQ=",
     "patchHash": "sha256-xgD+tMhY/3iaUDd+qYM0527IB65bfcElGxFWbKkVPgE=",
-    "patchRev": "d5db2a953637445998d2b0e5ab52ea9c04860a24",
+    "patchRev": "edb006d5cea1b0544fd084ad6e3683e0ab2090c7",
     "patchVersion": "6.18",
     "url": "https://github.com/CachyOS/linux/releases/download/cachyos-6.18.52-1/cachyos-6.18.52-1.tar.gz",
     "version": "6.18.52"
@@ -74,7 +74,7 @@
     "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/7269746718b4352087c1418f67e71bbf45fe3184/linux-cachyos-rc/config",
     "hash": "sha256-B4I01U08OIFSbXZQS95xQq1K3Zm7qXQahtHOftA/mtQ=",
     "patchHash": "sha256-DLYuEzL47zIGvu7hGkaNx/Hra8lVriJ3Ypz3TxFwFRI=",
-    "patchRev": "d5db2a953637445998d2b0e5ab52ea9c04860a24",
+    "patchRev": "edb006d5cea1b0544fd084ad6e3683e0ab2090c7",
     "patchVersion": "7.3",
     "url": "https://github.com/CachyOS/linux/releases/download/cachyos-7.3-rc3-4/cachyos-7.3-rc3-4.tar.gz",
     "version": "7.3-rc3"
@@ -83,8 +83,8 @@
     "configHash": "sha256-PfMxEuM1f+tqiZu/wAby3tFSJtGy63QayYbVgbnKd3M=",
     "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/7269746718b4352087c1418f67e71bbf45fe3184/linux-cachyos-rt-bore/config",
     "hash": "sha256-GEhwW2jvWi4CYOYfdRMf50FWJ+s9RTMpZl/npGiXqKQ=",
-    "patchHash": "sha256-rtwfmS9hL5oLEEKpaRm1tO9rOACRPmULYHrYOtbmbFQ=",
-    "patchRev": "d5db2a953637445998d2b0e5ab52ea9c04860a24",
+    "patchHash": "sha256-jSZEeUl33A8TCOdnDc5ft9LAnMMFb0U9FoGr/yRJMAU=",
+    "patchRev": "edb006d5cea1b0544fd084ad6e3683e0ab2090c7",
     "patchVersion": "7.2",
     "url": "https://github.com/CachyOS/linux/releases/download/cachyos-7.2.6-1/cachyos-7.2.6-1.tar.gz",
     "version": "7.2.6"
@@ -93,8 +93,8 @@
     "configHash": "sha256-PfMxEuM1f+tqiZu/wAby3tFSJtGy63QayYbVgbnKd3M=",
     "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/7269746718b4352087c1418f67e71bbf45fe3184/linux-cachyos-server/config",
     "hash": "sha256-GEhwW2jvWi4CYOYfdRMf50FWJ+s9RTMpZl/npGiXqKQ=",
-    "patchHash": "sha256-rtwfmS9hL5oLEEKpaRm1tO9rOACRPmULYHrYOtbmbFQ=",
-    "patchRev": "d5db2a953637445998d2b0e5ab52ea9c04860a24",
+    "patchHash": "sha256-jSZEeUl33A8TCOdnDc5ft9LAnMMFb0U9FoGr/yRJMAU=",
+    "patchRev": "edb006d5cea1b0544fd084ad6e3683e0ab2090c7",
     "patchVersion": "7.2",
     "url": "https://github.com/CachyOS/linux/releases/download/cachyos-7.2.6-1/cachyos-7.2.6-1.tar.gz",
     "version": "7.2.6"
