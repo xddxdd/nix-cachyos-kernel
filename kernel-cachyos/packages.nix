@@ -35,9 +35,10 @@ lib.mapAttrs' (
           nvidiaPackages = prev.nvidiaPackages // {
             latest = prev.nvidiaPackages.latest // {
               open = prev.nvidiaPackages.latest.open.overrideAttrs (old: {
+                # Seems to be fixed since 615
                 postPatch = (old.postPatch or "") + ''
                   substituteInPlace kernel-open/common/inc/nv-linux.h \
-                    --replace-fail \
+                    --replace-quiet \
                       "static inline int __to_hwgpio(const struct gpio_device *gdev," \
                       "static inline int __to_hwgpio(struct gpio_device *gdev,"
                 '';
