@@ -25,8 +25,11 @@ lib.mapAttrs' (
             inherit inputs variant;
           };
 
-          # VirtualBox host module doesn't pass kernel specific makeflags
+          # VirtualBox and VMWare host modules don't pass kernel specific makeflags
           virtualbox = prev.virtualbox.overrideAttrs (old: {
+            makeFlags = (old.makeFlags or [ ]) ++ final.kernel.commonMakeFlags;
+          });
+          vmware = prev.vmware.overrideAttrs (old: {
             makeFlags = (old.makeFlags or [ ]) ++ final.kernel.commonMakeFlags;
           });
 
