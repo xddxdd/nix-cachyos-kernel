@@ -1,7 +1,7 @@
 {
   "linux-cachyos": {
     "configHash": "sha256-gftW/jJmEqDcRwX8XsMJ0EvP/7SH2wy1hDkY/pKVGSc=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/66666177b78f29c32670ba4f78f882bc0b9cc03d/linux-cachyos/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/343523fffa2cbfd37e37a04e793d641cbd0fe975/linux-cachyos/config",
     "hash": "sha256-Pbopqo59zaQ67miY5MZt+/2ZfrXZAlELD66sxpbd+z8=",
     "patchHash": "sha256-LEbS4Ioo8biY9w6f1XbjXg+Fl3h4k6N2+XDji6oEALA=",
     "patchRev": "542948508e7098b6482d8269bc1097733dd27399",
@@ -11,7 +11,7 @@
   },
   "linux-cachyos-bmq": {
     "configHash": "sha256-gftW/jJmEqDcRwX8XsMJ0EvP/7SH2wy1hDkY/pKVGSc=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/66666177b78f29c32670ba4f78f882bc0b9cc03d/linux-cachyos-bmq/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/343523fffa2cbfd37e37a04e793d641cbd0fe975/linux-cachyos-bmq/config",
     "hash": "sha256-Pbopqo59zaQ67miY5MZt+/2ZfrXZAlELD66sxpbd+z8=",
     "patchHash": "sha256-LEbS4Ioo8biY9w6f1XbjXg+Fl3h4k6N2+XDji6oEALA=",
     "patchRev": "542948508e7098b6482d8269bc1097733dd27399",
@@ -21,7 +21,7 @@
   },
   "linux-cachyos-bore": {
     "configHash": "sha256-gftW/jJmEqDcRwX8XsMJ0EvP/7SH2wy1hDkY/pKVGSc=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/66666177b78f29c32670ba4f78f882bc0b9cc03d/linux-cachyos-bore/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/343523fffa2cbfd37e37a04e793d641cbd0fe975/linux-cachyos-bore/config",
     "hash": "sha256-Pbopqo59zaQ67miY5MZt+/2ZfrXZAlELD66sxpbd+z8=",
     "patchHash": "sha256-LEbS4Ioo8biY9w6f1XbjXg+Fl3h4k6N2+XDji6oEALA=",
     "patchRev": "542948508e7098b6482d8269bc1097733dd27399",
@@ -31,7 +31,7 @@
   },
   "linux-cachyos-deckify": {
     "configHash": "sha256-gftW/jJmEqDcRwX8XsMJ0EvP/7SH2wy1hDkY/pKVGSc=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/66666177b78f29c32670ba4f78f882bc0b9cc03d/linux-cachyos-deckify/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/343523fffa2cbfd37e37a04e793d641cbd0fe975/linux-cachyos-deckify/config",
     "hash": "sha256-Pbopqo59zaQ67miY5MZt+/2ZfrXZAlELD66sxpbd+z8=",
     "patchHash": "sha256-LEbS4Ioo8biY9w6f1XbjXg+Fl3h4k6N2+XDji6oEALA=",
     "patchRev": "542948508e7098b6482d8269bc1097733dd27399",
@@ -41,7 +41,7 @@
   },
   "linux-cachyos-eevdf": {
     "configHash": "sha256-gftW/jJmEqDcRwX8XsMJ0EvP/7SH2wy1hDkY/pKVGSc=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/66666177b78f29c32670ba4f78f882bc0b9cc03d/linux-cachyos-eevdf/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/343523fffa2cbfd37e37a04e793d641cbd0fe975/linux-cachyos-eevdf/config",
     "hash": "sha256-Pbopqo59zaQ67miY5MZt+/2ZfrXZAlELD66sxpbd+z8=",
     "patchHash": "sha256-LEbS4Ioo8biY9w6f1XbjXg+Fl3h4k6N2+XDji6oEALA=",
     "patchRev": "542948508e7098b6482d8269bc1097733dd27399",
@@ -51,7 +51,7 @@
   },
   "linux-cachyos-hardened": {
     "configHash": "sha256-4kwYbEqrt0NTPVx4iWJULfAbq+SzQ8lSsGnQr8WxLNE=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/66666177b78f29c32670ba4f78f882bc0b9cc03d/linux-cachyos-hardened/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/343523fffa2cbfd37e37a04e793d641cbd0fe975/linux-cachyos-hardened/config",
     "hash": "sha256-fiErY5CSSYoR2Vzc8ju/FmkBlIiLxydm0My7WfXphE0=",
     "patchHash": "sha256-uakEV32vllXjSRQcrFBiiLwzF8pCcapka+0eUFS6aLM=",
     "patchRev": "542948508e7098b6482d8269bc1097733dd27399",
@@ -61,7 +61,7 @@
   },
   "linux-cachyos-lts": {
     "configHash": "sha256-JywckeJlbqoVKVCVqMGWgdEUA7/5POjCZJUWYSHVg7c=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/66666177b78f29c32670ba4f78f882bc0b9cc03d/linux-cachyos-lts/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/343523fffa2cbfd37e37a04e793d641cbd0fe975/linux-cachyos-lts/config",
     "hash": "sha256-o2WLtgk9uYrH9OBB+OyV0iHeptP0fMphA0neSlf1MPU=",
     "patchHash": "sha256-2V6UILOYQRV/gjV7m7Jxm27TuBLYaqoIhr/EJzUEQl0=",
     "patchRev": "542948508e7098b6482d8269bc1097733dd27399",
@@ -71,7 +71,7 @@
   },
   "linux-cachyos-rc": {
     "configHash": "sha256-gftW/jJmEqDcRwX8XsMJ0EvP/7SH2wy1hDkY/pKVGSc=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/66666177b78f29c32670ba4f78f882bc0b9cc03d/linux-cachyos-rc/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/343523fffa2cbfd37e37a04e793d641cbd0fe975/linux-cachyos-rc/config",
     "hash": "sha256-5kPhNk7GQhXxWnvsmuF6GkKWjFapkIDTlbRGQbmWSiI=",
     "patchHash": "sha256-LEbS4Ioo8biY9w6f1XbjXg+Fl3h4k6N2+XDji6oEALA=",
     "patchRev": "542948508e7098b6482d8269bc1097733dd27399",
@@ -81,7 +81,7 @@
   },
   "linux-cachyos-rt-bore": {
     "configHash": "sha256-gftW/jJmEqDcRwX8XsMJ0EvP/7SH2wy1hDkY/pKVGSc=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/66666177b78f29c32670ba4f78f882bc0b9cc03d/linux-cachyos-rt-bore/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/343523fffa2cbfd37e37a04e793d641cbd0fe975/linux-cachyos-rt-bore/config",
     "hash": "sha256-Pbopqo59zaQ67miY5MZt+/2ZfrXZAlELD66sxpbd+z8=",
     "patchHash": "sha256-LEbS4Ioo8biY9w6f1XbjXg+Fl3h4k6N2+XDji6oEALA=",
     "patchRev": "542948508e7098b6482d8269bc1097733dd27399",
@@ -91,7 +91,7 @@
   },
   "linux-cachyos-server": {
     "configHash": "sha256-gftW/jJmEqDcRwX8XsMJ0EvP/7SH2wy1hDkY/pKVGSc=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/66666177b78f29c32670ba4f78f882bc0b9cc03d/linux-cachyos-server/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/343523fffa2cbfd37e37a04e793d641cbd0fe975/linux-cachyos-server/config",
     "hash": "sha256-Pbopqo59zaQ67miY5MZt+/2ZfrXZAlELD66sxpbd+z8=",
     "patchHash": "sha256-LEbS4Ioo8biY9w6f1XbjXg+Fl3h4k6N2+XDji6oEALA=",
     "patchRev": "542948508e7098b6482d8269bc1097733dd27399",
