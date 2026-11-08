@@ -23,6 +23,12 @@
     "url": "https://github.com/CachyOS/zfs/archive/fb48c76e17d3e0092fbba430a9eec1960e1b9961.tar.gz",
     "version": "2.4.4"
   },
+  "linux-cachyos-eac": {
+    "commit": "fb48c76e17d3e0092fbba430a9eec1960e1b9961",
+    "hash": "sha256-prCIL984HzWehXo8JrIZOTMgpmH/S33u9Z15LUciICE=",
+    "url": "https://github.com/CachyOS/zfs/archive/fb48c76e17d3e0092fbba430a9eec1960e1b9961.tar.gz",
+    "version": "2.4.4"
+  },
   "linux-cachyos-eevdf": {
     "commit": "fb48c76e17d3e0092fbba430a9eec1960e1b9961",
     "hash": "sha256-prCIL984HzWehXo8JrIZOTMgpmH/S33u9Z15LUciICE=",
