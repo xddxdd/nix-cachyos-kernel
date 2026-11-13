@@ -6,6 +6,7 @@
   kernelPatches,
   applyPatches,
   impureUseNativeOptimizations,
+  pahole,
   ...
 }:
 lib.makeOverridable (
@@ -152,6 +153,15 @@ lib.makeOverridable (
           # from what I can see, this still hasn't been merged into 7.0, so may
           # be a bit
           RUST = lib.kernel.no;
+        })
+        // (lib.optionalAttrs (lto != "none" && lib.versionOlder pahole.version "1.33") {
+          # CachyOS upstream use a patched pahole for Rust+LTO support
+          # https://github.com/CachyOS/CachyOS-PKGBUILDS/tree/master/pahole
+          # which we do not have in nixpkgs yet. Current pahole version is 1.32.
+          # Assuming the patches will be included in next pahole release.
+          #
+          # Disabled since this feature requires pahole.
+          DEBUG_INFO_BTF = lib.kernel.no;
         })
       ))
 
