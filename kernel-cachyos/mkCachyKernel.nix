@@ -160,8 +160,9 @@ lib.makeOverridable (
           # which we do not have in nixpkgs yet. Current pahole version is 1.32.
           # Assuming the patches will be included in next pahole release.
           #
-          # Disabled since this feature requires pahole.
-          DEBUG_INFO_BTF = lib.kernel.no;
+          # Disabled since Rust+LTO requires pahole.
+          # Do not disable DEBUG_INFO_BTF since that breaks eBPF.
+          RUST = lib.kernel.no;
         })
       ))
 
