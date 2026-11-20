@@ -1,7 +1,7 @@
 {
   "linux-cachyos": {
     "configHash": "sha256-ZFljMB3bv37+lN3rjqRKJl+reUYufr4688YKlP17Peg=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/6c4d2ba46a5ed60c88c7d49c77b0fd1c500c2df5/linux-cachyos/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/093d3cd2ff29928ab951bf000794872d911ed190/linux-cachyos/config",
     "hash": "sha256-uyKtmeEEL66IO6txNm+DOTZ7dMBFAE/pKtSSMzkJLgc=",
     "patchHash": "sha256-yH6bT7EYPTP9ecaYk+JG771JSYkQgRtSlY0QWq5/VJ4=",
     "patchRev": "664442dd1a913ef8838453828d26ae13b2e7334d",
@@ -11,7 +11,7 @@
   },
   "linux-cachyos-bmq": {
     "configHash": "sha256-ZFljMB3bv37+lN3rjqRKJl+reUYufr4688YKlP17Peg=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/6c4d2ba46a5ed60c88c7d49c77b0fd1c500c2df5/linux-cachyos-bmq/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/093d3cd2ff29928ab951bf000794872d911ed190/linux-cachyos-bmq/config",
     "hash": "sha256-uyKtmeEEL66IO6txNm+DOTZ7dMBFAE/pKtSSMzkJLgc=",
     "patchHash": "sha256-yH6bT7EYPTP9ecaYk+JG771JSYkQgRtSlY0QWq5/VJ4=",
     "patchRev": "664442dd1a913ef8838453828d26ae13b2e7334d",
@@ -21,7 +21,7 @@
   },
   "linux-cachyos-bore": {
     "configHash": "sha256-ZFljMB3bv37+lN3rjqRKJl+reUYufr4688YKlP17Peg=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/6c4d2ba46a5ed60c88c7d49c77b0fd1c500c2df5/linux-cachyos-bore/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/093d3cd2ff29928ab951bf000794872d911ed190/linux-cachyos-bore/config",
     "hash": "sha256-uyKtmeEEL66IO6txNm+DOTZ7dMBFAE/pKtSSMzkJLgc=",
     "patchHash": "sha256-yH6bT7EYPTP9ecaYk+JG771JSYkQgRtSlY0QWq5/VJ4=",
     "patchRev": "664442dd1a913ef8838453828d26ae13b2e7334d",
@@ -31,7 +31,7 @@
   },
   "linux-cachyos-deckify": {
     "configHash": "sha256-ZFljMB3bv37+lN3rjqRKJl+reUYufr4688YKlP17Peg=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/6c4d2ba46a5ed60c88c7d49c77b0fd1c500c2df5/linux-cachyos-deckify/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/093d3cd2ff29928ab951bf000794872d911ed190/linux-cachyos-deckify/config",
     "hash": "sha256-uyKtmeEEL66IO6txNm+DOTZ7dMBFAE/pKtSSMzkJLgc=",
     "patchHash": "sha256-yH6bT7EYPTP9ecaYk+JG771JSYkQgRtSlY0QWq5/VJ4=",
     "patchRev": "664442dd1a913ef8838453828d26ae13b2e7334d",
@@ -41,7 +41,7 @@
   },
   "linux-cachyos-eac": {
     "configHash": "sha256-ZFljMB3bv37+lN3rjqRKJl+reUYufr4688YKlP17Peg=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/6c4d2ba46a5ed60c88c7d49c77b0fd1c500c2df5/linux-cachyos-eac/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/093d3cd2ff29928ab951bf000794872d911ed190/linux-cachyos-eac/config",
     "hash": "sha256-uyKtmeEEL66IO6txNm+DOTZ7dMBFAE/pKtSSMzkJLgc=",
     "patchHash": "sha256-yH6bT7EYPTP9ecaYk+JG771JSYkQgRtSlY0QWq5/VJ4=",
     "patchRev": "664442dd1a913ef8838453828d26ae13b2e7334d",
@@ -51,7 +51,7 @@
   },
   "linux-cachyos-eevdf": {
     "configHash": "sha256-ZFljMB3bv37+lN3rjqRKJl+reUYufr4688YKlP17Peg=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/6c4d2ba46a5ed60c88c7d49c77b0fd1c500c2df5/linux-cachyos-eevdf/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/093d3cd2ff29928ab951bf000794872d911ed190/linux-cachyos-eevdf/config",
     "hash": "sha256-uyKtmeEEL66IO6txNm+DOTZ7dMBFAE/pKtSSMzkJLgc=",
     "patchHash": "sha256-yH6bT7EYPTP9ecaYk+JG771JSYkQgRtSlY0QWq5/VJ4=",
     "patchRev": "664442dd1a913ef8838453828d26ae13b2e7334d",
@@ -61,7 +61,7 @@
   },
   "linux-cachyos-hardened": {
     "configHash": "sha256-4kwYbEqrt0NTPVx4iWJULfAbq+SzQ8lSsGnQr8WxLNE=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/6c4d2ba46a5ed60c88c7d49c77b0fd1c500c2df5/linux-cachyos-hardened/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/093d3cd2ff29928ab951bf000794872d911ed190/linux-cachyos-hardened/config",
     "hash": "sha256-fiErY5CSSYoR2Vzc8ju/FmkBlIiLxydm0My7WfXphE0=",
     "patchHash": "sha256-uakEV32vllXjSRQcrFBiiLwzF8pCcapka+0eUFS6aLM=",
     "patchRev": "664442dd1a913ef8838453828d26ae13b2e7334d",
@@ -71,7 +71,7 @@
   },
   "linux-cachyos-lts": {
     "configHash": "sha256-JywckeJlbqoVKVCVqMGWgdEUA7/5POjCZJUWYSHVg7c=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/6c4d2ba46a5ed60c88c7d49c77b0fd1c500c2df5/linux-cachyos-lts/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/093d3cd2ff29928ab951bf000794872d911ed190/linux-cachyos-lts/config",
     "hash": "sha256-RSzRSogu6bq2zeqcwI8LJ3a1oQJw6nxNfe0+YIJcbwE=",
     "patchHash": "sha256-2V6UILOYQRV/gjV7m7Jxm27TuBLYaqoIhr/EJzUEQl0=",
     "patchRev": "664442dd1a913ef8838453828d26ae13b2e7334d",
@@ -81,7 +81,7 @@
   },
   "linux-cachyos-rc": {
     "configHash": "sha256-ElcBl/5A3atYP99sAET3P6zCFGuEE3KVEcCYZ5n0QxE=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/6c4d2ba46a5ed60c88c7d49c77b0fd1c500c2df5/linux-cachyos-rc/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/093d3cd2ff29928ab951bf000794872d911ed190/linux-cachyos-rc/config",
     "hash": "sha256-McP4rBjTxacyIBLjHQN+9ilTqduz0DSQwaGiGpZ7Ouk=",
     "patchHash": "sha256-GXkm1+8xSvGDh9yylv8Qq1uZW2KcL+/LIQ8qAKm27KQ=",
     "patchRev": "664442dd1a913ef8838453828d26ae13b2e7334d",
@@ -91,7 +91,7 @@
   },
   "linux-cachyos-rt-bore": {
     "configHash": "sha256-ZFljMB3bv37+lN3rjqRKJl+reUYufr4688YKlP17Peg=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/6c4d2ba46a5ed60c88c7d49c77b0fd1c500c2df5/linux-cachyos-rt-bore/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/093d3cd2ff29928ab951bf000794872d911ed190/linux-cachyos-rt-bore/config",
     "hash": "sha256-uyKtmeEEL66IO6txNm+DOTZ7dMBFAE/pKtSSMzkJLgc=",
     "patchHash": "sha256-yH6bT7EYPTP9ecaYk+JG771JSYkQgRtSlY0QWq5/VJ4=",
     "patchRev": "664442dd1a913ef8838453828d26ae13b2e7334d",
@@ -101,7 +101,7 @@
   },
   "linux-cachyos-server": {
     "configHash": "sha256-ZFljMB3bv37+lN3rjqRKJl+reUYufr4688YKlP17Peg=",
-    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/6c4d2ba46a5ed60c88c7d49c77b0fd1c500c2df5/linux-cachyos-server/config",
+    "configUrl": "https://raw.githubusercontent.com/CachyOS/linux-cachyos/093d3cd2ff29928ab951bf000794872d911ed190/linux-cachyos-server/config",
     "hash": "sha256-uyKtmeEEL66IO6txNm+DOTZ7dMBFAE/pKtSSMzkJLgc=",
     "patchHash": "sha256-yH6bT7EYPTP9ecaYk+JG771JSYkQgRtSlY0QWq5/VJ4=",
     "patchRev": "664442dd1a913ef8838453828d26ae13b2e7334d",
